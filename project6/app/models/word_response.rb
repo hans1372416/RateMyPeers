@@ -1,0 +1,2 @@
+class WordResponse < ApplicationRecord
+end
