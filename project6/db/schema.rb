@@ -10,9 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_003614) do
+ActiveRecord::Schema.define(version: 2019_04_08_015130) do
 
   create_table "instructors", force: :cascade do |t|
+    t.string "name"
+    t.string "username"
+    t.string "password"
+    t.string "class"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,11 +27,29 @@ ActiveRecord::Schema.define(version: 2019_04_08_003614) do
   end
 
   create_table "students", force: :cascade do |t|
+    t.string "name"
+    t.string "username"
+    t.string "password"
+    t.string "groupName"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "welcomes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "word_responses", force: :cascade do |t|
+    t.boolean "q1"
+    t.boolean "q2"
+    t.boolean "q3"
+    t.boolean "q4"
+    t.boolean "q5"
+    t.string "groupName"
+    t.string "className"
+    t.string "Semester"
+    t.string "StudentName"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

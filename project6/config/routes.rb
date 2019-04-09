@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :word_responses
   resources :instructors
   resources :students
   resources :welcomes

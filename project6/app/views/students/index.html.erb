@@ -1,4 +1,4 @@
-<!-- <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
 <h1>Students</h1>
 
@@ -12,6 +12,7 @@
   <tbody>
     <% @students.each do |student| %>
       <tr>
+        <td><%=student.name%></td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -22,7 +23,13 @@
 
 <br>
 
-<%= link_to 'New Student', new_student_path %> -->
+<%= link_to 'New Student', new_student_path %>
+
+
+
+
+
+
 
 
 
@@ -32,3 +39,19 @@
 
 </br></br></br></br>
 <font size="10px" color="red">Login information should go there first </font>
+<p>===============================================================================</p>
+<font  color="red">Go to evalution section if they logged in successfully</font>
+<p>===============================================================================</p>
+<li><%= link_to "Evaluation_interface_Student", :controller => 'word_responses', :action => 'index' %></li>
+
+
+
+
+
+
+
+
+
+
+
+
