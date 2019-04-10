@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'instructorsessions/new'
+  get 'studentsessions/new'
   resources :word_responses
   resources :instructors
   resources :students
@@ -8,7 +10,12 @@ Rails.application.routes.draw do
  
   root 'welcomes#index'
 
-  get '/student_signup', to: 'students#new'
-  get '/instructor_signup', to: 'instructors#new'
-  
+  get  '/student_signup', to: 'students#new'
+  get  '/instructor_signup', to: 'instructors#new'
+  get  '/student_login', to: 'studentsessions#new'
+  post '/student_login', to: 'studentsessions#create'
+  delete '/student_logout', to: 'studentsessions#destroy'
+  get  '/instructor_login', to: 'instructorsessions#new'
+  post '/instructor_login', to: 'instructorsessions#create'
+  delete '/instructor_logout', to: 'instructorsessions#destroy'
 end

@@ -1,0 +1,17 @@
+<h1>Instructor Login</h1>
+<p>Find me in app/views/instructorsessions/new.html.erb</p>
+
+  <div>
+    <%= form_for(:instructorsession, url: instructor_login_path) do |f| %>
+
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password%>
+
+      <%= f.submit "Log in"%>
+    <% end %>
+
+    <p>New Instructor? <%= link_to "Sign up now!", instructor_signup_path %></p>
+  </div>
