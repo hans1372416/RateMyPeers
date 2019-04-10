@@ -1,0 +1,17 @@
+<h1>Student Login</h1>
+<p>Find me in app/views/studentsessions/new.html.erb</p>
+
+  <div>
+    <%= form_for(:studentsession, url: student_login_path) do |f| %>
+
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password%>
+
+      <%= f.submit "Log in"%>
+    <% end %>
+
+    <p>New student? <%= link_to "Sign up now!", student_signup_path %></p>
+  </div>
