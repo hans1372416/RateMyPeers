@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :welcomes
   resources :ratings
   resources :groups
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+ 
   root 'welcomes#index'
 
   get '/student_signup', to: 'students#new'
