@@ -7,8 +7,8 @@
 <table>
   <thead>
     <tr>
-      <th>Group Name</th>
       <th>Class Name</th>
+      <th>Group Name</th>
       <th>Semester</th>
       <th colspan="3"></th>
     </tr>
@@ -18,8 +18,8 @@
     <% @groups.each do |group| %>
     <!-- If User signed is not an admin but is part of the group, show only group name, email and and member --> 
       <tr>
-        <td><%= group.gname %></td>
         <td><%= group.cname %></td>
+        <td><%= group.gname %></td>
         <td><%= group.semester %></td>
         <td><%= link_to 'Show', group %></td>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
