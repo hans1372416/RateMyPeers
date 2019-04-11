@@ -14,7 +14,8 @@ class WordResponsesController < ApplicationController
 
   # GET /word_responses/new
   def new
-    @word_response = WordResponse.new
+       @word_response = current_user.word_responses.build
+       @groups = Group.all.map {|g| [g.cname, g.id]}
   end
 
   # GET /word_responses/1/edit
@@ -24,8 +25,9 @@ class WordResponsesController < ApplicationController
   # POST /word_responses
   # POST /word_responses.json
   def create
-    @word_response = WordResponse.new(word_response_params)
-    @word_response = Time.zone.now if published?
+    @word_response = current_user.word_responses.build(word_response_params)
+    # @word_response = Time.zone.now if published?
+    @word_response.group_id = params[:group_id]
 
     respond_to do |format|
       if @word_response.save

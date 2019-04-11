@@ -16,7 +16,14 @@
 </p>
 
 
+<% if user_signed_in? %>
 
 
-<%= link_to 'Edit', edit_word_response_path(@word_response) %> |
-<%= link_to 'Back', word_responses_path %>
+	<% if @word_response.user_id == current_user.id %>
+
+	<%= link_to 'Edit', edit_word_response_path(@word_response) %> |
+	<%= link_to 'Back', word_responses_path %>
+
+	<% end %>
+
+<% end %>

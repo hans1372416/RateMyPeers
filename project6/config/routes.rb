@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'instructorsessions/new'
   get 'studentsessions/new'
   resources :word_responses

@@ -13,6 +13,7 @@
 
 <h1 style="color:red;"> Group and class hasn't been linked at this moment  </h1>
 
+<%= select_tag(:group_id, options_for_select(@groups), :prompt => "select the group") %>
 
 <div class="form-group">
     <%= form.label :"Q1: how do you feel about your class" %>
@@ -41,3 +42,4 @@
 
 
 
+select_tag "people", options_from_collection_for_select(@people, "id", "name"), prompt: "Select something"

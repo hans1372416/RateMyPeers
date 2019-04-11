@@ -6,10 +6,10 @@ class CreateWordResponses < ActiveRecord::Migration[5.2]
       t.integer :q3
       t.integer :q4
       t.integer :q5
-      t.string  :groupName
-      t.string  :className
+      t.integer  :group_id
+      t.integer  :class_id
       t.string  :Semester
-      t.string  :StudentName
+      t.integer  :user_id
 
       t.timestamps
 
