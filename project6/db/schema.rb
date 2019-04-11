@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_160312) do
   create_table "instructors", force: :cascade do |t|
     t.string "name"
     t.string "username"
-    t.string "class"
+    t.string "class_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
@@ -49,11 +49,11 @@ ActiveRecord::Schema.define(version: 2019_04_10_160312) do
   end
 
   create_table "word_responses", force: :cascade do |t|
-    t.boolean "q1"
-    t.boolean "q2"
-    t.boolean "q3"
-    t.boolean "q4"
-    t.boolean "q5"
+    t.integer "q1"
+    t.integer "q2"
+    t.integer "q3"
+    t.integer "q4"
+    t.integer "q5"
     t.string "groupName"
     t.string "className"
     t.string "Semester"

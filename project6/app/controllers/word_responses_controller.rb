@@ -25,6 +25,7 @@ class WordResponsesController < ApplicationController
   # POST /word_responses.json
   def create
     @word_response = WordResponse.new(word_response_params)
+    @word_response = Time.zone.now if published?
 
     respond_to do |format|
       if @word_response.save
@@ -40,6 +41,8 @@ class WordResponsesController < ApplicationController
   # PATCH/PUT /word_responses/1
   # PATCH/PUT /word_responses/1.json
   def update
+
+    @word_response = Time.zone.now if published?
     respond_to do |format|
       if @word_response.update(word_response_params)
         format.html { redirect_to @word_response, notice: 'Word response was successfully updated.' }
@@ -62,6 +65,9 @@ class WordResponsesController < ApplicationController
   end
 
   private
+
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_word_response
       @word_response = WordResponse.find(params[:id])
@@ -69,6 +75,28 @@ class WordResponsesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def word_response_params
-      params.fetch(:word_response, {})
+      params.require(:word_response).permit(:q1, :q2, :q3, :q4, :q5 , :Semester, :StudentName)
+      # params.fetch(:word_response, {})
     end
+
+    def published?
+      params[:commit] == "Submit"
+    end
+
+    def save_as_draft?
+      params[:commit] == "Save As Draft"
+    end
+
+
 end
+
+
+
+
+
+
+
+
+
+
+
