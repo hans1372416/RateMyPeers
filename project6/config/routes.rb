@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :projects
+  devise_for :users
   get 'instructorsessions/new'
   get 'studentsessions/new'
   resources :word_responses

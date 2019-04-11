@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_160312) do
+ActiveRecord::Schema.define(version: 2019_04_11_130244) do
 
   create_table "groups", force: :cascade do |t|
     t.string "gname"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_160312) do
   create_table "instructors", force: :cascade do |t|
     t.string "name"
     t.string "username"
-    t.string "class"
+    t.string "class_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
@@ -43,21 +43,33 @@ ActiveRecord::Schema.define(version: 2019_04_10_160312) do
     t.string "password_digest"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
   create_table "welcomes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "word_responses", force: :cascade do |t|
-    t.boolean "q1"
-    t.boolean "q2"
-    t.boolean "q3"
-    t.boolean "q4"
-    t.boolean "q5"
-    t.string "groupName"
-    t.string "className"
+    t.integer "q1"
+    t.integer "q2"
+    t.integer "q3"
+    t.integer "q4"
+    t.integer "q5"
+    t.integer "group_id"
+    t.integer "class_id"
     t.string "Semester"
-    t.string "StudentName"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

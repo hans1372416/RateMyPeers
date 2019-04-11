@@ -24,19 +24,22 @@
 
 <%= link_to 'New Welcome', new_welcome_path %> -->
 
+<div class="jumbotron">
+  <h1>welcome to our project.</h1> 
 
-<h1>welcome to our project.</h1> 
+</div>
+  <p>This is the index page which will provide you with instructions and how to use our website<br/><br/>
 
-<p>This is the index page which will provide you with instructions and how to use our website<br/><br/>
-
-//For teammembers: In order to get more information, please go to app/views/welcomes/index.html.erb</p>
-
-<%= link_to 'Students sign up here!', student_signup_path %>
-<%= link_to 'Instructors sign up here!', instructor_signup_path %>
+  //For teammembers: In order to get more information, please go to app/views/welcomes/index.html.erb</p>
 
 
-<li><%= link_to "Student", :controller => 'students', :action => 'index' %></li>
-<li><%= link_to "Instructor", :controller => 'instructors', :action => 'index' %>
+
+<%= link_to 'Students sign up here!', student_signup_path ,class: "btn btn-info"%>
+<%= link_to 'Instructors sign up here!', instructor_signup_path ,class: "btn btn-info"%>
+
+
+<li><%= link_to "Student", :controller => 'students', :action => 'index' ,class: "btn btn-primary"%></li>
+<li><%= link_to "Instructor", :controller => 'instructors', :action => 'index' ,class: "btn btn-primary"%>
 </li>
 
 

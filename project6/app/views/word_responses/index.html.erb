@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Word Responses</h1>
+<!-- <h1>Word Responses</h1> -->
 
 <table>
   <thead>
@@ -12,14 +12,25 @@
   <tbody>
     <% @word_responses.each do |word_response| %>
       <tr>
+        <td><%= word_response.q1 %></td>
         <td><%= link_to 'Show', word_response %></td>
-        <td><%= link_to 'Edit', edit_word_response_path(word_response) %></td>
-        <td><%= link_to 'Destroy', word_response, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!-- <td><%= link_to 'Edit', edit_word_response_path(word_response) %></td> -->
+        <!-- <td><%= link_to 'Destroy', word_response, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<br> 
 
-<%= link_to 'New Word Response', new_word_response_path %>
+
+<h1>Good morning,folks </h1>
+<section>
+  <p>This is the homepage of peer evaluation. There will totally be two type of evaluations you need to finish</p>
+  <p>We will apprepriate your feedback for your feeling after project for the first section</p>
+  <p>For the second section, you are required to rating your teammembers numerically</p>
+
+</section>
+
+
+ <%= link_to 'New Peer evaluations', new_word_response_path %>
