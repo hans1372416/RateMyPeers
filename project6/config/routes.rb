@@ -11,6 +11,8 @@ Rails.application.routes.draw do
  
   root 'welcomes#index'
 
+  get  '/signup', to: 'welcomes#signup'
+  get  '/login', to: 'welcomes#login'
   get  '/student_signup', to: 'students#new'
   get  '/instructor_signup', to: 'instructors#new'
   get  '/student_login', to: 'studentsessions#new'

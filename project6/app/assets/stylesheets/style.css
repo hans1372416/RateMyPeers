@@ -2,6 +2,7 @@ html{
   font-family: 'Roboto', sans-serif;
   word-wrap: break-word;
   background-color: #F2F1E9;
+  color: #333;
 }
 body{
   margin: 0;
@@ -9,6 +10,12 @@ body{
 }
 .content{
   padding: 0 10%;
+}
+h1{
+  font-weight: 900;
+}
+h3{
+  font-weight: 400;
 }
 
 /* start of nav */
@@ -20,7 +27,7 @@ nav{
   background-color: #333;
   position: relative;
   text-align: right;
-  color:#dddddd;
+  color:#F2F1E9;
   font-size: 11pt;
   font-weight: 400;
   font-family: 'Montserrat', sans-serif;
@@ -104,27 +111,28 @@ nav .profile-pic{
 /* end of nav */
 
 
-.login{
+.login,.signup{
   text-align: center;
 }
 .field *{
   margin: 5pt;
 }
-input[type="email"],input[type="password"],input[type="submit"]{
+input[type="email"],input[type="password"],input[type="submit"],input[type="text"]{
   padding: 5pt;
+  margin: 10pt 0;
   font-size: 12pt;
   border-radius: 20pt;
   border: 2px solid #F5765E;
   text-align: center;
   outline: none;
   font-family: roboto;
-    background: none;
+  background: none;
 }
-input[type="email"],input[type="password"]{
+input[type="email"],input[type="password"],input[type="text"]{
   width: 200pt;
   transition: .2s;
 }
-input[type="email"]:focus,input[type="password"]:focus{
+input[type="email"]:focus,input[type="password"]:focus,input[type="text"]:focus{
   width: 275pt;
   border: 2px solid #C73030;
 }
