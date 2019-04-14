@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(version: 2019_04_14_184404) do
   create_table "instructors", force: :cascade do |t|
     t.string "name"
     t.string "username"
-    t.string "class_code"
+    t.string "course_id"
+    t.string "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
@@ -51,7 +52,9 @@ ActiveRecord::Schema.define(version: 2019_04_14_184404) do
   create_table "students", force: :cascade do |t|
     t.string "name"
     t.string "username"
-    t.string "groupName"
+    t.string "group_id"
+    t.string "course_id"
+    t.string "ratings"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
@@ -81,8 +84,8 @@ ActiveRecord::Schema.define(version: 2019_04_14_184404) do
     t.integer "q4"
     t.integer "q5"
     t.integer "group_id"
-    t.integer "class_id"
-    t.string "Semester"
+    t.integer "course_id"
+    t.string "semester"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -11,15 +11,12 @@
 
   <body>
 
-      <% if studentlogged_in? %>
-      	<%= render "layouts/nav-student" %>
-      <% elsif instructorlogged_in?%>
-        <%= render "layouts/nav-instructor" %>
+      <% if user_signed_in? %>
+        <%= render "layouts/nav-student" %>
       <% else %>
       	<%= render "layouts/nav-anon" %>
       <% end %>
     
-
     
 
     <div class="content">
