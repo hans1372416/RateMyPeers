@@ -14,7 +14,7 @@ class ProjectsTest < ApplicationSystemTestCase
     visit projects_url
     click_on "New Project"
 
-    fill_in "Id", with: @project.id
+    fill_in "Group", with: @project.group_id
     fill_in "Name", with: @project.name
     click_on "Create Project"
 
@@ -26,7 +26,7 @@ class ProjectsTest < ApplicationSystemTestCase
     visit projects_url
     click_on "Edit", match: :first
 
-    fill_in "Id", with: @project.id
+    fill_in "Group", with: @project.group_id
     fill_in "Name", with: @project.name
     click_on "Update Project"
 

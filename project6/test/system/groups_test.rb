@@ -14,8 +14,8 @@ class GroupsTest < ApplicationSystemTestCase
     visit groups_url
     click_on "New Group"
 
-    fill_in "Cname", with: @group.cname
-    fill_in "Gname", with: @group.gname
+    fill_in "Course", with: @group.course_id
+    fill_in "Name", with: @group.name
     fill_in "Semester", with: @group.semester
     click_on "Create Group"
 
@@ -27,8 +27,8 @@ class GroupsTest < ApplicationSystemTestCase
     visit groups_url
     click_on "Edit", match: :first
 
-    fill_in "Cname", with: @group.cname
-    fill_in "Gname", with: @group.gname
+    fill_in "Course", with: @group.course_id
+    fill_in "Name", with: @group.name
     fill_in "Semester", with: @group.semester
     click_on "Update Group"
 

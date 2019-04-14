@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :projects
+  resources :groups
+  resources :memberships
   devise_for :users
   get 'instructorsessions/new'
   get 'studentsessions/new'
@@ -7,7 +10,6 @@ Rails.application.routes.draw do
   resources :students
   resources :welcomes
   resources :ratings
-  resources :groups
  
   root 'welcomes#index'
 
