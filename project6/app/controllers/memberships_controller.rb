@@ -4,16 +4,7 @@ class MembershipsController < ApplicationController
   # GET /memberships
   # GET /memberships.json
   def index
-    # URL redirection to home page if user is not signed in
-    if !user_signed_in?
-      redirect_to welcome_path
-    end
-    # URL redirection to home page if user signed in is not admin
-    if user_signed_in? and !current_user.try(:admin?)
-      redirect_to welcome_path
-    end
-
-    @memberships = Membership.all
+   @memberships = Membership.all
   end
 
   # GET /memberships/1
@@ -23,12 +14,7 @@ class MembershipsController < ApplicationController
 
   # GET /memberships/new
   def new
-     # URL redirection to home page if user is not signed in
-    if !user_signed_in?
-      redirect_to welcome_path
-    end
-
-    @membership = Membership.new
+     @membership = Membership.new
   end
 
   # GET /memberships/1/edit
@@ -70,20 +56,6 @@ class MembershipsController < ApplicationController
   # DELETE /memberships/1
   # DELETE /memberships/1.json
   def destroy
-    Eval.all.collect.each do |eval|
-      if eval.user_id == @membership.user_id
-        eval.destroy
-      end
-    end
-
-    # Remove all Results for a selected group
-    Result.all.collect.each do |result|
-      if result.user_id == @membership.user_id
-        result.destroy
-      end
-    end
-
-    # Removed a member
     @membership.destroy
     respond_to do |format|
       format.html { redirect_to groups_path, notice: 'Membership was successfully destroyed.' }
@@ -92,11 +64,6 @@ class MembershipsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_membership
-      @membership = Membership.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def membership_params
       params.require(:membership).permit(:user_id, :group_id)
