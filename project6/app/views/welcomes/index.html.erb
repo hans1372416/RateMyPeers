@@ -1,51 +1,8 @@
-<!-- <p id="notice"><%= notice %></p>
+      <h1>Peer Evaluation Website</h1>
+      <ul>
+        <li>This is the index page which will provide you with instructions and how to use our website</li>
+        <li>For team members: In order to get more information, please go to app/views/welcomes/index.html.erb</li>
+        <li>Use the navigation bar above to get to the sign up and log in pages</li>
+        <li>Easy access to the index of peer evaluaton: <a href="/ratings">Peer evaluation</a></li>
+      </ul>
 
-<h1>Welcomes</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @welcomes.each do |welcome| %>
-      <tr>
-        <td><%= link_to 'Show', welcome %></td>
-        <td><%= link_to 'Edit', edit_welcome_path(welcome) %></td>
-        <td><%= link_to 'Destroy', welcome, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Welcome', new_welcome_path %> -->
-
-<div class="jumbotron">
-  <h1>welcome to our project.</h1> 
-
-</div>
-  <p>This is the index page which will provide you with instructions and how to use our website<br/><br/>
-
-  //For teammembers: In order to get more information, please go to app/views/welcomes/index.html.erb</p>
-
-
-
-<%= link_to 'Students sign up here!', student_signup_path ,class: "btn btn-info"%>
-<%= link_to 'Instructors sign up here!', instructor_signup_path ,class: "btn btn-info"%>
-
-
-<li><%= link_to "Student", :controller => 'students', :action => 'index' ,class: "btn btn-primary"%></li>
-<li><%= link_to "Instructor", :controller => 'instructors', :action => 'index' ,class: "btn btn-primary"%>
-</li>
-
-
-
-</br></br></br></br></br>
-
-<p>The following section is peer evaluations that are developed right now </p>
-<p>Easy access to the index of peer evaluaton</p>
-<%= link_to "Peer evaluation", :controller => 'ratings', :action => 'index' %>

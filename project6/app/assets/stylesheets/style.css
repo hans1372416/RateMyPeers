@@ -1,0 +1,155 @@
+html{
+  font-family: 'Roboto', sans-serif;
+  word-wrap: break-word;
+  background-color: #F2F1E9;
+  color: #333;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+.content{
+  padding: 0 10%;
+}
+h1{
+  font-weight: 900;
+}
+h3{
+  font-weight: 400;
+}
+
+/* start of nav */
+
+nav{
+  width: 100%;
+  margin:0 0 20pt 0;
+  padding:0;
+  background-color: #333;
+  position: relative;
+  text-align: right;
+  color:#F2F1E9;
+  font-size: 11pt;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+}
+nav .links{
+  width: 80%;
+  margin: 0 auto;
+}
+@media screen and (max-width: 800px){
+  nav .links{
+    width: 100%;
+    min-width: 300pt;
+  }
+  nav #user{
+    margin-right: 0;
+  }
+}
+nav a{
+  text-decoration: none;
+  display: inline-block;
+  color:#dddddd;
+  padding: 12pt;
+  margin: 0;
+  position: relative;
+}
+nav a:hover{
+  color: #ffffff;
+}
+nav .logo{
+  margin: 1pt;
+  margin-left: 5pt;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+}
+.logo *{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  vertical-align:middle;
+}
+nav a.title{
+  float: left;
+  margin-left: 40pt;
+  font-size: 12pt;
+  font-weight: 500;
+}
+nav .profile-pic{
+  margin: 2pt;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  right: 0
+}
+.profile-pic *{
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.user{
+  position: relative;
+  display: inline-block;
+}
+#username{
+  margin-right: 40pt;
+}
+.user .options{
+  text-align: left;
+  display: none;
+  background-color: rgba(51,51,51,.85);
+  position: absolute;
+  top: 37.5pt;
+  position: absolute;
+  right: 0
+}
+.user:hover .options{
+  display: block;
+}
+
+/* end of nav */
+
+
+.login,.signup{
+  text-align: center;
+}
+.field *{
+  margin: 5pt;
+}
+input[type="email"],input[type="password"],input[type="submit"],input[type="text"]{
+  padding: 5pt;
+  margin: 10pt 0;
+  font-size: 12pt;
+  border-radius: 20pt;
+  border: 2px solid #F5765E;
+  text-align: center;
+  outline: none;
+  font-family: roboto;
+  background: none;
+}
+input[type="email"],input[type="password"],input[type="text"]{
+  width: 200pt;
+  transition: .2s;
+}
+input[type="email"]:focus,input[type="password"]:focus,input[type="text"]:focus{
+  width: 275pt;
+  border: 2px solid #C73030;
+}
+input[type="submit"]{
+  margin: 10pt;
+  padding: 5pt 20pt;
+
+  transition: .1s;
+  border: 2px solid #F5765E;
+}
+input[type="submit"]:hover{
+  background-color: #F5765E;
+}
+a{
+  text-decoration: none;
+  color: #0d70c4;
+}
+a:hover{
+  color: #003b6d;
+}

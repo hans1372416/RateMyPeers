@@ -3,7 +3,8 @@ class CreateInstructors < ActiveRecord::Migration[5.2]
     create_table :instructors do |t|
       t.string :name
       t.string :username
-      t.string :class_code
+      t.string :cname
+      t.string :gname
 
       t.timestamps
     end
