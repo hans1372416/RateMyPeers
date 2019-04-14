@@ -7,8 +7,8 @@ class CreateWordResponses < ActiveRecord::Migration[5.2]
       t.integer :q4
       t.integer :q5
       t.integer  :group_id
-      t.integer  :class_id
-      t.string  :Semester
+      t.integer  :course_id
+      t.string  :semester
       t.integer  :user_id
 
       t.timestamps
