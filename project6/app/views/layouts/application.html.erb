@@ -11,9 +11,11 @@
 
   <body>
 
-      <% if user_signed_in? %>
-      	<%= render "layouts/nav-user" %>
-      <%else%>
+      <% if studentlogged_in? %>
+      	<%= render "layouts/nav-student" %>
+      <% elsif instructorlogged_in?%>
+        <%= render "layouts/nav-instructor" %>
+      <% else %>
       	<%= render "layouts/nav-anon" %>
       <% end %>
     
@@ -23,6 +25,9 @@
     <div class="content">
     	<p class="notice"><%= notice %></p>
     	<p class="alert"><%= alert %></p>
+        <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
       	<%= yield %>
     </div>
 

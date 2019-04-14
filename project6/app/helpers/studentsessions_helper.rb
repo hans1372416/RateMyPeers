@@ -1,6 +1,6 @@
 module StudentsessionsHelper
 
-  def log_in(student)
+  def student_log_in(student)
     session[:student_id] = student.id
   end
 
@@ -9,9 +9,14 @@ module StudentsessionsHelper
       @current_student ||= Student.find_by(id: session[:student_id])
     end
   end
-
-  def logged_in?
+  #returns true if student is logged in, false otherwise
+  def studentlogged_in?
     !current_student.nil?
+  end
+
+  def student_log_out
+    session.delete(:student_id)
+    @current_student = nil
   end
 
 end

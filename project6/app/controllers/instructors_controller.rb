@@ -28,6 +28,8 @@ class InstructorsController < ApplicationController
 
     respond_to do |format|
       if @instructor.save
+        instructor_log_in @instructor
+        flash[:success] = "Welcome to the Peer Eval website!"
         format.html { redirect_to @instructor, notice: 'Instructor was successfully created.' }
         format.json { render :show, status: :created, location: @instructor }
       else
