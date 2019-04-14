@@ -4,41 +4,21 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    # URL redirection to home page if user is not signed in
-    if !user_signed_in?
-      redirect_to welcome_path
-    end
-
-    @groups = Group.all
+   @groups = Group.all
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
-  # URL redirection to home page if user is not signed in
-    if !user_signed_in?
-      redirect_to welcome_path
-    end
-
   end
 
   # GET /groups/new
   def new
-    # URL redirection to home page if user is not signed in
-    if !user_signed_in?
-      redirect_to welcome_path
-    end
-    # Create a new group
     @group = Group.new
   end
 
   # GET /groups/1/edit
   def edit
-     # URL redirection to home page if user is not signed in
-    if !user_signed_in?
-      redirect_to welcome_path
-    end
-
   end
 
   # POST /groups
@@ -75,25 +55,7 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-  # Remove all evaluations for a selected group
-    Eval.all.collect.each do |eval|
-      if eval.group_id == @group.id
-        eval.destroy
-      end
-    end
-    # Remove all Results for a selected group
-    Result.all.collect.each do |result|
-      if result.group_id == @group.id
-        result.destroy
-      end
-    end
-
-    # Remove members of a group
-    for i in @group.membership_ids
-      Membership.find(i).destroy
-    end
-
-    # Remove the group
+  # Remove the group
     @group.destroy
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
