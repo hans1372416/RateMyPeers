@@ -78,9 +78,9 @@ ActiveRecord::Schema.define(version: 2019_04_14_184404) do
   end
 
   create_table "word_responses", force: :cascade do |t|
-    t.integer "q1"
-    t.integer "q2"
-    t.integer "q3"
+    t.string "q1"
+    t.string "q2"
+    t.string "q3"
     t.integer "q4"
     t.integer "q5"
     t.integer "group_id"

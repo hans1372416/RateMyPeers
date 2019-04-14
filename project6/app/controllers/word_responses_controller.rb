@@ -15,7 +15,7 @@ class WordResponsesController < ApplicationController
   # GET /word_responses/new
   def new
        @word_response = current_user.word_responses.build
-       @groups = Group.all.map {|g| [g.cname, g.id]}
+       @groups = Group.all.map {|g| [g.course_id, g.id]}
   end
 
   # GET /word_responses/1/edit
@@ -77,7 +77,7 @@ class WordResponsesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def word_response_params
-      params.require(:word_response).permit(:q1, :q2, :q3, :q4, :q5 , :Semester, :StudentName)
+      params.permit(:q1, :q2, :q3,:group_id)
       # params.fetch(:word_response, {})
     end
 
