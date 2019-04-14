@@ -6,11 +6,11 @@ class MembershipsController < ApplicationController
   def index
     # URL redirection to home page if user is not signed in
     if !user_signed_in?
-      redirect_to page_home_path
+      redirect_to welcome_path
     end
     # URL redirection to home page if user signed in is not admin
     if user_signed_in? and !current_user.try(:admin?)
-      redirect_to page_home_path
+      redirect_to welcome_path
     end
 
     @memberships = Membership.all
@@ -25,7 +25,7 @@ class MembershipsController < ApplicationController
   def new
      # URL redirection to home page if user is not signed in
     if !user_signed_in?
-      redirect_to page_home_path
+      redirect_to welcome_path
     end
 
     @membership = Membership.new

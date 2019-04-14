@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   def index
     # URL redirection to home page if user is not signed in
     if !user_signed_in?
-      redirect_to page_home_path
+      redirect_to welcome_path
     end
 
     @groups = Group.all
@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
   def show
   # URL redirection to home page if user is not signed in
     if !user_signed_in?
-      redirect_to page_home_path
+      redirect_to welcome_path
     end
 
   end
@@ -26,7 +26,7 @@ class GroupsController < ApplicationController
   def new
     # URL redirection to home page if user is not signed in
     if !user_signed_in?
-      redirect_to page_home_path
+      redirect_to welcome_path
     end
     # Create a new group
     @group = Group.new
@@ -36,7 +36,7 @@ class GroupsController < ApplicationController
   def edit
      # URL redirection to home page if user is not signed in
     if !user_signed_in?
-      redirect_to page_home_path
+      redirect_to welcome_path
     end
 
   end
