@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :scoreboards
   resources :courses
   resources :projects
   resources :groups

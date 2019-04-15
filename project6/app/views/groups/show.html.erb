@@ -15,5 +15,16 @@
   <%= @group.semester %>
 </p>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<p>
+  <strong>member2:</strong>
+  <%= @group.member2 %>
+</p>
+
+
+
+
+
+<!-- <h>	<%= link_to 'Edit', edit_group_path(@group) %> </h> -->
+<li><%= link_to "Evaluation_interface_Student", :controller => 'word_responses', :action => 'index' %></li>
+
+<li><%= link_to 'Back', groups_path %></li>
