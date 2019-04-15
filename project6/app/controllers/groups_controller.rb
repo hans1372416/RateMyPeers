@@ -29,6 +29,7 @@ class GroupsController < ApplicationController
   def create
     @group =  current_user.groups.build(group_params)
     @group.course_id = params[:course_id]
+    @group.semester= params[:semester]
 
     # Create and save a group
     respond_to do |format|
