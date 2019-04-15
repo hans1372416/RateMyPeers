@@ -11,19 +11,22 @@
     </div>
   <% end %>
 
+  <% semester =[['SP19','SP19'],['AU19','AU19'],['SP20','SP20']] %>
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
-
+ 
   <div class="field">
     <%= form.label :course_id %>
-    <%= form.text_field :course_id %>
+    <%= select_tag(:course_id, options_for_select(@courses), :prompt => "select the answer") %>
   </div>
+
 
   <div class="field">
     <%= form.label :semester %>
-    <%= form.text_field :semester %>
+    <%= select_tag(:semester, options_for_select(semester), :prompt => "select the answer") %>
+
   </div>
 
   <div class="actions">

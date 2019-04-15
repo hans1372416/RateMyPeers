@@ -16,6 +16,7 @@ class WordResponsesController < ApplicationController
   def new
        @word_response = current_user.word_responses.build
        @groups = Group.all.map {|g| [g.course_id, g.id]}
+      
   end
 
   # GET /word_responses/1/edit
@@ -26,7 +27,6 @@ class WordResponsesController < ApplicationController
   # POST /word_responses.json
   def create
     @word_response = current_user.word_responses.build(word_response_params)
-    # @word_response = Time.zone.now if published?
     @word_response.group_id = params[:group_id]
 
     respond_to do |format|

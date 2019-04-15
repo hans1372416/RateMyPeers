@@ -14,7 +14,10 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    @group = Group.new
+    @group =  current_user.groups.build
+    @courses = Course.all.map {|g| [g.class_id, g.id]}
+    
+
   end
 
   # GET /groups/1/edit
@@ -24,7 +27,9 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
+    @group =  current_user.groups.build(group_params)
+    @group.course_id = params[:course_id]
+
     # Create and save a group
     respond_to do |format|
       if @group.save

@@ -4,6 +4,7 @@ class CreateGroups < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :course_id
       t.string :semester
+      t.integer  :user_id
 
       t.timestamps
     end
