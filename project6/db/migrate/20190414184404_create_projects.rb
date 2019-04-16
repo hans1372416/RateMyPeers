@@ -1,10 +1,10 @@
 class CreateProjects < ActiveRecord::Migration[5.2]
   def change
-    create_table :projects do |t|
-      t.string :name
-      t.string :group_id
+    # create_table :projects do |t|
+    #   # t.string :name
+    #   # t.string :group_id
 
-      t.timestamps
-    end
+    #   t.timestamps
+    # end
   end
 end

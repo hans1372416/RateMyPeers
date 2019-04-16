@@ -13,62 +13,42 @@
 ActiveRecord::Schema.define(version: 2019_04_15_172745) do
 
   create_table "courses", force: :cascade do |t|
-    t.string "instructor"
-    t.string "class_id"
+    t.string "cname"
+    t.string "semester"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string "name"
+    t.string "gname"
     t.string "course_id"
-    t.string "semester"
-    t.integer "user_id"
-    t.string "member1"
-    t.string "member2"
-    t.string "member3"
-    t.string "member4"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "instructors", force: :cascade do |t|
-    t.string "name"
-    t.string "username"
-    t.string "course_id"
-    t.string "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest"
   end
 
   create_table "memberships", force: :cascade do |t|
     t.string "user_id"
     t.string "group_id"
-    t.integer "people_number"
-    t.integer "m1"
-    t.integer "m2"
-    t.integer "m3"
-    t.integer "m4"
-    t.integer "m5"
-    t.integer "m6"
-    t.integer "m7"
-    t.integer "m8"
-    t.integer "m9"
-    t.integer "m10"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "projects", force: :cascade do |t|
-    t.string "name"
-    t.string "group_id"
+    t.string "q1"
+    t.string "q2"
+    t.string "q3"
+    t.string "q4"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "ratings", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "rater_id"
+    t.integer "ratee_id"
+    t.integer "score"
+    t.string "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -82,19 +62,19 @@ ActiveRecord::Schema.define(version: 2019_04_15_172745) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "name"
-    t.string "username"
-    t.string "group_id"
-    t.string "course_id"
-    t.string "ratings"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.boolean "admin"
+    t.string "name"
+    t.string "Fname"
+    t.string "Lname"
+    t.float "score"
+    t.integer "commented_num"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
