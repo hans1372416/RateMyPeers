@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_17_203113) do
+ActiveRecord::Schema.define(version: 2019_04_17_210551) do
 
   create_table "courses", force: :cascade do |t|
     t.string "cname"
@@ -22,14 +22,14 @@ ActiveRecord::Schema.define(version: 2019_04_17_203113) do
 
   create_table "groups", force: :cascade do |t|
     t.string "gname"
-    t.string "course_id"
+    t.integer "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "memberships", force: :cascade do |t|
-    t.string "user_id"
-    t.string "group_id"
+    t.integer "user_id"
+    t.integer "group_id"
     t.string "q1"
     t.string "q2"
     t.string "q3"
@@ -38,10 +38,12 @@ ActiveRecord::Schema.define(version: 2019_04_17_203113) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "scoreboards", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "ratings", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "rater_id"
+    t.integer "ratee_id"
     t.float "score"
-    t.string "comment"
+    t.string "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,12 +51,10 @@ ActiveRecord::Schema.define(version: 2019_04_17_203113) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.boolean "admin"
-    t.string "name"
+    t.boolean "admin", default: false
     t.string "Fname"
     t.string "Lname"
     t.float "score"
-    t.integer "commented_num"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
