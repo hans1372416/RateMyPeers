@@ -1,4 +1,6 @@
 class Group < ApplicationRecord
-		 belongs_to :user
-
+	has_many :memberships
+	has_many :ratings
+	has_many :users, :through => :memberships
+	belongs_to :course
 end
