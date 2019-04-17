@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Instructor:</strong>
-  <%= @course.instructor %>
-</p>
+<h1>Name: <%= @course.cname %></h1>
+<h1>Semester: <%= @course.semester %></h1>
+ 
+<h1>Groups:</h1>
+<% if @course.group_ids.length == 0 %>
+  <h2>There are currently no groups in this class</h2>
+<% end %>
 
-<p>
-  <strong>Class:</strong>
-  <%= @course.class_id %>
-</p>
+<% for i in 0...@course.group_ids.length %>
+  <h2><%= Group.find(@course.group_ids[i]).gname %></h2>
+<% end %>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<br><%= link_to 'Create New Group', new_group_path, :class => "btn btn-default" %>
+<br><%= link_to 'Back', courses_path, :class => "btn btn-default" %>

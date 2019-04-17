@@ -12,13 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :instructor %>
-    <%= form.text_field :instructor %>
+    <%= form.label :Name %>
+    <%= form.text_field :cname %>
+    <%= form.hidden_field :user_id, :value => current_user.id  %>
   </div>
 
   <div class="field">
-    <%= form.label :class_id %>
-    <%= form.text_field :class_id %>
+    <%= form.label :Semester %>
+    <%= form.text_field :semester %>
   </div>
 
   <div class="actions">
