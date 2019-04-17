@@ -4,33 +4,47 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-   @groups = Group.all
+    # URL redirection to home page if user is not signed in
+    if !user_signed_in?
+      redirect_to welcomes_path
+    end
+
+    @groups = Group.all
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
+  # URL redirection to home page if user is not signed in
+    if !user_signed_in?
+      redirect_to welcomes_path
+    end
+
   end
 
   # GET /groups/new
   def new
-    @group =  current_user.groups.build
-    @courses = Course.all.map {|g| [g.class_id, g.id]}
-    
-
+    # URL redirection to home page if user is not signed in
+    if !user_signed_in?
+      redirect_to welcomes_path
+    end
+    # Create a new group
+    @group = Group.new
   end
 
   # GET /groups/1/edit
   def edit
+     # URL redirection to home page if user is not signed in
+    if !user_signed_in?
+      redirect_to welcomes_path
+    end
+
   end
 
   # POST /groups
   # POST /groups.json
   def create
-    @group =  current_user.groups.build(group_params)
-    @group.course_id = params[:course_id]
-    @group.semester= params[:semester]
-
+    @group = Group.new(group_params)
     # Create and save a group
     respond_to do |format|
       if @group.save
@@ -61,7 +75,19 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-  # Remove the group
+    # Remove all Ratings for a selected group
+    Rating.all.collect.each do |rating|
+      if rating.group_id == @group.id
+        rating.destroy
+      end
+    end
+
+    # Remove members of a group
+    for i in @group.membership_ids
+      Membership.find(i).destroy
+    end
+
+    # Remove the group
     @group.destroy
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
@@ -77,6 +103,6 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:name, :course_id, :semester)
+      params.require(:group).permit(:gname, :course_id)
     end
 end
