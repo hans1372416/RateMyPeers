@@ -1,17 +1,12 @@
 Rails.application.routes.draw do
   resources :scoreboards
   resources :courses
-  resources :projects
   resources :groups
   resources :memberships
   devise_for :users
   get 'instructorsessions/new'
   get 'studentsessions/new'
-  resources :word_responses
-  resources :instructors
-  resources :students
   resources :welcomes
-  resources :ratings
  
   root 'welcomes#index'
 

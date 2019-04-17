@@ -1,9 +1,0 @@
-<div class="login">
-<h1>Instructor Login</h1>
-<%= form_for(:instructorsession, url: instructor_login_path) do |f| %>
-  <%= f.text_field :username, placeholder: "username" %><br>
-  <%= f.password_field :password, placeholder: "password"%><br>
-  <%= f.submit "Login"%>
-<% end %>
-<p>New User? <%= link_to "Sign up now!", instructor_signup_path %></p>
-</div>

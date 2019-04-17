@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_15_172745) do
+ActiveRecord::Schema.define(version: 2019_04_17_203113) do
 
   create_table "courses", force: :cascade do |t|
     t.string "cname"
@@ -27,11 +27,6 @@ ActiveRecord::Schema.define(version: 2019_04_15_172745) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "instructors", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "memberships", force: :cascade do |t|
     t.string "user_id"
     t.string "group_id"
@@ -43,25 +38,10 @@ ActiveRecord::Schema.define(version: 2019_04_15_172745) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "rater_id"
-    t.integer "ratee_id"
-    t.integer "score"
-    t.string "comments"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "scoreboards", force: :cascade do |t|
     t.integer "user_id"
     t.float "score"
     t.string "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "students", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,20 +65,6 @@ ActiveRecord::Schema.define(version: 2019_04_15_172745) do
   end
 
   create_table "welcomes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "word_responses", force: :cascade do |t|
-    t.string "q1"
-    t.string "q2"
-    t.string "q3"
-    t.integer "q4"
-    t.integer "q5"
-    t.integer "group_id"
-    t.integer "course_id"
-    t.string "semester"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
