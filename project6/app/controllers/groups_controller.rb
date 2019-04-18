@@ -8,7 +8,6 @@ class GroupsController < ApplicationController
     if !user_signed_in?
       redirect_to welcomes_path
     end
-
     @groups = Group.all
   end
 
@@ -38,7 +37,6 @@ class GroupsController < ApplicationController
     if !user_signed_in?
       redirect_to welcomes_path
     end
-
   end
 
   # POST /groups

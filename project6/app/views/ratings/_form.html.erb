@@ -11,7 +11,20 @@
     </div>
   <% end %>
 
+  <h2>Rater: <%= User.find(params[:rater_id]).name %></h2>
+  <h2>Ratee: <%= User.find(params[:ratee_id]).name %></h2>
+  <h2>Group: <%= Group.find(params[:group_id]).gname %></h2>
+
+  <div class="field">
+    <%= form.label :score %><br>
+    <%= form.select :score, (0..10) %>
+  </div>
+  <div class="field">
+    <%= form.label "Additional Comments" %><br>
+    <%= form.text_field :comments %>
+  </div>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Submit Evaluation", :class => "btn btn-primary" %>
+    <%= link_to 'Back', evals_path, :class => "btn btn-default" %>
   </div>
 <% end %>

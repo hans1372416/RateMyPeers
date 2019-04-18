@@ -1,31 +1,54 @@
 <p id="notice"><%= notice %></p>
 
+<% if !current_user.try(:admin?) %>
 <h1>Groups</h1>
+<% else %>
+<h1>Manage Groups</h1>
+<% end %>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
+      <th>Number of Members</th>
       <th>Course</th>
-      <th>Semester</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @groups.each do |group| %>
-      <tr>
-        <td><%= group.name %></td>
-        <td><%= group.course_id %></td>
-        <td><%= group.semester %></td>
-        <td><%= link_to 'Show', group %></td>
-<!--         <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-      </tr>
+      <% if user_signed_in? and !current_user.try(:admin?) %>
+      	<% for i in 0...group.membership_ids.length %>
+           <% if current_user.membership_ids.include? group.membership_ids[i] %>
+      	      <tr>
+                 <td><%= group.gname %></td>
+	         <td><%= group.membership_ids.length %></td>
+                 <td><%= group.course_id %></td>
+                 <td><%= link_to 'Show', group %></td>
+              </tr>
+           <% end %>
+        <% end %>
+      <% end %>nju
+    <% end %>
+
+    <% if current_user.try(:admin?) %>
+      <% @groups.each do |group| %>
+        <tr><% if user_signed_in? %>
+                <td><%= group.gname %></td>
+                <td><%= group.membership_ids.length %></td>
+                <td><%= Course.find(group.course_id).cname %></td>
+                <td><%= link_to 'Show', memberships_path(:group_id => group.id), :class => "btn btn-default" %>
+                    <%= link_to 'Add Member', new_membership_path(:group_id => group.id), :class => "btn btn-primary" %>
+                    <%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure you want to delete ' + group.gname + '?'}, :class => "btn btn-danger" %>
+                </td>
+          <% end %>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
- <%= link_to 'New Group', new_group_path %>
+<%= link_to 'New Group', new_group_path %>

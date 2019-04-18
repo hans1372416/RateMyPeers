@@ -11,53 +11,15 @@
     </div>
   <% end %>
 
-  <% semester =[['SP19','SP19'],['AU19','AU19'],['SP20','SP20']] %>
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :Name %>
+    <%= form.text_field :gname %>
+    <%= form.hidden_field :course_id, :value => Course.find(params[:course_id]).id  %>
   </div>
- 
-  <div class="field">
-    <%= form.label :course_id %>
-    <%= select_tag(:course_id, options_for_select(@courses), :prompt => "select the answer") %>
-  </div>
-
-
-  <div class="field">
-    <%= form.label :semester %>
-    <%= select_tag(:semester, options_for_select(semester), :prompt => "select the answer") %>
-
-  </div>
-
-   <div class="field">
-    <%= form.label :member1 %>
-    <%= form.text_field :member1 %>
-  </div>
-
-   <div class="field">
-    <%= form.label :member2 %>
-    <%= form.text_field :member2 %>
-  </div>
-
-   <div class="field">
-    <%= form.label :member3 %>
-    <%= form.text_field :member3 %>
-  </div>
-
-   <div class="field">
-    <%= form.label :member4 %>
-    <%= form.text_field :namember4 %>
-  </div>
-
-   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-
-
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create Group", :class => "btn btn-default" %>
+    <%= link_to 'Back', groups_path, :class => "btn btn-default" %>
   </div>
+
 <% end %>

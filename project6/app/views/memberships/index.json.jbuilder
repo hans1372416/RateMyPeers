@@ -1,1 +1,4 @@
-json.array! @memberships, partial: 'memberships/membership', as: :membership
+json.array!(@memberships) do |membership|
+  json.extract! membership, :id, :user_id, :group_id
+  json.url membership_url(membership, format: :json)
+end
