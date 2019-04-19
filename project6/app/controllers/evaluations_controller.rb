@@ -8,10 +8,6 @@ class EvaluationsController < ApplicationController
     if !user_signed_in?
       redirect_to welcomes_path
     end
-    # URL redirection to home page if user signed is admin
-    if user_signed_in? and current_user.try(:admin?)
-      redirect_to welcomes_path
-    end
     @evaluations = Evaluation.all
   end
 
@@ -22,20 +18,12 @@ class EvaluationsController < ApplicationController
     if !user_signed_in?
       redirect_to welcomes_path
     end
-    # URL redirection to home page if user signed is admin
-    if user_signed_in? and current_user.try(:admin?)
-      redirect_to welcomes_path
-    end
   end
 
   # GET /evaluations/new
   def new
     # URL redirection to home page if no user signed in
     if !user_signed_in?
-      redirect_to welcomes_path
-    end
-    # URL redirection to home page if user signed is admin
-    if user_signed_in? and current_user.try(:admin?)
       redirect_to welcomes_path
     end
     @evaluation = Evaluation.new

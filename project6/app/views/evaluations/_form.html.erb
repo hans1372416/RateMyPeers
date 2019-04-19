@@ -12,21 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :rater_id %>
-    <%= form.number_field :rater_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ratee_id %>
-    <%= form.number_field :ratee_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :group_id %>
+    <%= form.label :group_id %><br>
     <%= form.number_field :group_id %>
   </div>
-
+  <div class="field">
+    <%= form.label :rater_id %><br>
+    <%= form.number_field :rater_id %>
+  </div>
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>
