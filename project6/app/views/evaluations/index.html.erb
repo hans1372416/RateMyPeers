@@ -5,29 +5,27 @@
 <table>
   <thead>
     <tr>
-      <th>Attempt</th>
-      <th>Rater</th>
-      <th>Ratee</th>
       <th>Group</th>
-      <th colspan="3"></th>
+      <th>Group Member</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @evaluations.each do |evaluation| %>
-      <tr>
-        <td><%= evaluation.attempt %></td>
-        <td><%= evaluation.rater_id %></td>
-        <td><%= evaluation.ratee_id %></td>
-        <td><%= evaluation.group_id %></td>
-        <td><%= link_to 'Show', evaluation %></td>
-        <td><%= link_to 'Edit', edit_evaluation_path(evaluation) %></td>
-        <td><%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if (evaluation.rater_id == current_user.id and evaluation.attempt == false) or current_user.try(:admin?) %>
+        <tr>
+          <td><%= Group.find(evaluation.group_id).gname %></td>
+          <td><%= User.find(evaluation.ratee_id).name %></td>
+          <td><%= link_to 'Evaluate', ratings_new_path(:eval_id => evaluation.id), :class => "btn btn-primary" %>
+          
+          <!--If user is admin, allow to destroy evaluation --> 
+              <% if current_user.try(:admin?) %>
+                <br><%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %><br> </td>
+              <% end %>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Evaluation', new_evaluation_path %>

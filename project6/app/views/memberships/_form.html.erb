@@ -12,17 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
+    <%= form.label "Student" %>
     <%= form.select :user_id, User.where(:admin => false).collect {|p| [ p.email, p.id ] } %>
   </div>
 
   <div class="field">
-    <%= form.label "Group" %><br>
-    <%= form.number_field :group_id, :value => Group.find(params[:group_id]).id, :readonly => true %>
+    <%= form.label "Group" %>
+    <%= form.text_field :group_id, :value => Group.find(params[:group_id]).id, :readonly => true %>
   </div>
 
   <div class="actions">
     <%= form.submit "Add Student", :class => "btn btn-primary"%>
-    <%= link_to 'Back', groups_path, :class => "btn btn-default" %>
+    <%= link_to 'Back to Groups', groups_path, :class => "btn btn-default" %>
   </div>
 <% end %>

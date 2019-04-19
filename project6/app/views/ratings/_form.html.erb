@@ -19,12 +19,15 @@
     <%= form.label :score %><br>
     <%= form.select :score, (0..10) %>
   </div>
+
   <div class="field">
     <%= form.label "Additional Comments" %><br>
     <%= form.text_field :comments %>
   </div>
+
   <div class="actions">
     <%= form.submit "Submit Evaluation", :class => "btn btn-primary" %>
     <%= link_to 'Back', evals_path, :class => "btn btn-default" %>
   </div>
+
 <% end %>
