@@ -17,7 +17,7 @@
   </thead>
 
   <tbody>
-    <!-- If User signed is not an admin but is part of the group, show only group name and members --> 
+    <!-- If user signed is not an admin but is part of the group, show only group name and members --> 
     <% @groups.each do |group| %>
       <% if user_signed_in? and !current_user.try(:admin?) %>
       	<% for i in 0...group.membership_ids.length %>
@@ -43,17 +43,17 @@
                 <td><%= link_to 'Show', memberships_path(:group_id => group.id), :class => "btn btn-default" %>
 
                     <!-- Check if all evals previously sent out are completed --> 
-                    <% evalsFinished = true %>
-                    <% for i in 0...group.eval_ids.length %>
-                        <% if Rating.find(group.eval_ids[i]).attempt == false %>
-                          <% evalsFinished = false %>
+                    <% evalsCheck = true %>
+                    <% for i in 0...group.evaluation_ids.length %>
+                        <% if Evaluation.find(group.evaluation_ids[i]).attempt == false %>
+                          <% evalsCheck = false %>
                         <% end %>
-                    <% end %>f
+                    <% end %>
 
                     <!-- Show option to send evals to students group if all other evals sent out have been completed only -->
-                    <% if group.eval_ids.empty? || evalsFinished %>
+                    <% if group.evaluation_ids.empty? || evalsCheck %>
                       <% if group.membership_ids.length > 1 %>
-                        <%= link_to 'Send Evaluations to Students', welcome_evals_created_path(:group_id => group.id), data: { confirm: 'Are you sure you want to open evaluations for ' + group.gname + '?'}, :class => "btn btn-default" %><br>
+                        <%= link_to 'Send Evaluations to Students', welcomes_confirmation_path(:group_id => group.id), data: { confirm: 'Are you sure you want to request evaluations for ' + group.gname + '?'}, :class => "btn btn-default" %><br>
                       <% end %>
                     <% end %>
 
@@ -61,8 +61,8 @@
                  
                     <!-- Show evaluation results if any exist -->
                     <% resultsExist = false %>
-                    <% for i in 0...group.eval_ids.length %>
-                      <% if Rating.find(group.eval_ids[i]).attempt == true %>
+                    <% for i in 0...group.evaluation_ids.length %>
+                      <% if Evaluation.find(group.evaluation_ids[i]).attempt == true %>
                         <% resultsExist = true %>
                       <% end %>
                     <% end %>

@@ -1,7 +1,7 @@
 class WelcomesController < ApplicationController
   before_action :set_welcome, only: [:show, :edit, :update, :destroy]
 
-  def evals_created
+  def confirmation
   end
 
   # GET /welcomes

@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   get  '/signup', to: 'welcomes#signup'
   get  '/login', to: 'welcomes#login'
+  get 'welcomes/confirmation'
 end
