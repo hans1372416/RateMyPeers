@@ -14,6 +14,10 @@ class EvaluationsTest < ApplicationSystemTestCase
     visit evaluations_url
     click_on "New Evaluation"
 
+    check "Attempt" if @evaluation.attempt
+    fill_in "Group", with: @evaluation.group_id
+    fill_in "Ratee", with: @evaluation.ratee_id
+    fill_in "Rater", with: @evaluation.rater_id
     click_on "Create Evaluation"
 
     assert_text "Evaluation was successfully created"
@@ -24,6 +28,10 @@ class EvaluationsTest < ApplicationSystemTestCase
     visit evaluations_url
     click_on "Edit", match: :first
 
+    check "Attempt" if @evaluation.attempt
+    fill_in "Group", with: @evaluation.group_id
+    fill_in "Ratee", with: @evaluation.ratee_id
+    fill_in "Rater", with: @evaluation.rater_id
     click_on "Update Evaluation"
 
     assert_text "Evaluation was successfully updated"

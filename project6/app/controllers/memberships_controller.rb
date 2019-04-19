@@ -70,7 +70,12 @@ class MembershipsController < ApplicationController
   # DELETE /memberships/1
   # DELETE /memberships/1.json
   def destroy
-
+    # Remove all evaluations for a selected group
+    Eval.all.collect.each do |eval|
+      if eval.user_id == @membership.user_id
+        eval.destroy
+      end
+    end
     # Remove all Ratings for a selected group
     Rating.all.collect.each do |rating|
       if rating.user_id == @membership.user_id

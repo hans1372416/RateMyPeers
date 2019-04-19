@@ -17,7 +17,7 @@ class EvaluationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create evaluation" do
     assert_difference('Evaluation.count') do
-      post evaluations_url, params: { evaluation: {  } }
+      post evaluations_url, params: { evaluation: { attempt: @evaluation.attempt, group_id: @evaluation.group_id, ratee_id: @evaluation.ratee_id, rater_id: @evaluation.rater_id } }
     end
 
     assert_redirected_to evaluation_url(Evaluation.last)
@@ -34,7 +34,7 @@ class EvaluationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update evaluation" do
-    patch evaluation_url(@evaluation), params: { evaluation: {  } }
+    patch evaluation_url(@evaluation), params: { evaluation: { attempt: @evaluation.attempt, group_id: @evaluation.group_id, ratee_id: @evaluation.ratee_id, rater_id: @evaluation.rater_id } }
     assert_redirected_to evaluation_url(@evaluation)
   end
 

@@ -6,7 +6,7 @@
       <%= "There are currently no members in this group" %>
    <% else %>
       <% for i in 0...@group.membership_ids.length %>
-         <strong><%= User.find(Membership.find(@group.membership_ids[i]).user_id).email %></strong><br>
+         <strong><%= User.find(Membership.find(@group.membership_ids[i]).user_id).name %></strong><br>
       <% end %>
    <% end %><br>
 <br>

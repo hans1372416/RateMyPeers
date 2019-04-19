@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :memberships
   has_many :ratings
+  has_many :evaluations
   has_many :groups, :through => :memberships
   has_many :courses
 
