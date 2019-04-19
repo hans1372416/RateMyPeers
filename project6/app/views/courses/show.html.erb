@@ -8,6 +8,9 @@
   <h2>There are currently no groups in this class</h2>
 <% end %>
 
+<%# TODO: add functionality to link directly to groups %>
+<%# idea: link_to ' Group.find(@course.group_ids[i]).gname', show_group_path(:group_id => @group.id) %>
+
 <% for i in 0...@course.group_ids.length %>
   <h2><%= Group.find(@course.group_ids[i]).gname %></h2>
 <% end %>

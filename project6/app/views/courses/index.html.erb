@@ -35,9 +35,7 @@
 
 <br>
 <% if current_user.try(:admin?) %>
-  Instructors should be able to see all the students after they click on the show button</br>
   <%= link_to 'New Course', new_course_path %></br>
-  <%= link_to 'See scores', ratings_path %>
 <% end %>
 
 
