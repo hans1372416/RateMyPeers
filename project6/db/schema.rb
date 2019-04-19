@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_19_160605) do
+ActiveRecord::Schema.define(version: 2019_04_19_185003) do
 
   create_table "courses", force: :cascade do |t|
     t.string "cname"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2019_04_19_160605) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.string "name"
     t.string "Fname"
     t.string "Lname"

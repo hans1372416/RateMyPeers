@@ -13,7 +13,7 @@
 
   <tbody>
     <% @evaluations.each do |evaluation| %>
-      <% if (evaluation.rater_id == current_user.id and evaluation.attempt == false) or current_user.try(:admin?) %>
+      <% if (evaluation.rater_id == current_user.id and evaluation.attempt == false) or current_user.try(:admin?) %> 
         <tr>
           <td><%= Group.find(evaluation.group_id).gname %></td>
           <td><%= User.find(evaluation.ratee_id).name %></td>
@@ -21,7 +21,7 @@
           
           <!--If user is admin, allow to destroy evaluation --> 
               <% if current_user.try(:admin?) %>
-                <br><%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %><br> </td>
+                <br><%= link_to 'Delete', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %><br> </td>
               <% end %>
         </tr>
       <% end %>
