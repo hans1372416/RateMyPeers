@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_19_033121) do
+ActiveRecord::Schema.define(version: 2019_04_19_160605) do
 
   create_table "courses", force: :cascade do |t|
     t.string "cname"
@@ -31,14 +31,14 @@ ActiveRecord::Schema.define(version: 2019_04_19_033121) do
 
   create_table "groups", force: :cascade do |t|
     t.string "gname"
-    t.integer "course_id"
+    t.string "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "memberships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "group_id"
+    t.string "user_id"
+    t.string "group_id"
     t.string "q1"
     t.string "q2"
     t.string "q3"
@@ -60,16 +60,17 @@ ActiveRecord::Schema.define(version: 2019_04_19_033121) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.boolean "admin", default: false
+    t.boolean "admin"
+    t.string "name"
     t.string "Fname"
     t.string "Lname"
     t.float "score"
+    t.integer "commented_num"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
