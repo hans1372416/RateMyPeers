@@ -17,9 +17,6 @@
 </div>
 
 
-
-
-
   <div class="field">
     <% if @minimum_password_length %>
     <% end %>
@@ -30,12 +27,6 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" , placeholder: "confirm password"%>
   </div>
 
-  <div class="field">
-    Admin?
-    <%= f.radio_button :admin , "Admin"%>
-
-  </div>
-
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
@@ -43,4 +34,3 @@
 
 <%= render "devise/shared/links" %>
 </div>
-
