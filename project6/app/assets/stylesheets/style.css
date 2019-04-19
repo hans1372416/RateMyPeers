@@ -42,6 +42,7 @@ nav{
   z-index: 1000;
   position:fixed;
   text-align: right;
+	top:0;
   color:#F2F1E9;
   font-size: 11pt;
   font-weight: 400;
