@@ -30,7 +30,14 @@ h3{
   font-weight: 400;
   margin: 0;
 }
-
+.divforalerts{
+margin:20pt 0 ;
+color:#F2F1E9;
+border-radius:100pt;
+background-color:#333;
+padding:10pt;
+font-weight:600;
+}
 /* start of nav */
 
 nav{
