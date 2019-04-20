@@ -15,8 +15,8 @@
 <% for i in 0...@members.length %>
 	<% for j in 0...@members.length %>
 		<% if i != j %>
-			<% @eval1 = Evaluation.new(:group_id => Group.find(params[:group_id]).id, :ratee_id => @members[i].id, :ratee_id => @members[j].id, :attempt => false) %>
-			<% @eval1.save %>
+			<% @eval = Evaluation.new(:group_id => Group.find(params[:group_id]).id, :rater_id => @members[i].id, :ratee_id => @members[j].id, :attempt => false) %>
+			<% @eval.save %>
 		<% end %>
 	<% end %>
 <% end %>

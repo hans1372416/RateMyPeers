@@ -2,13 +2,12 @@
 <h1>(For team members):</h1><br>
 <% if !user_signed_in? %>
       <h1>Peer Evaluations</h1>
-      <h1>There is an admin user created. Use test.1@osu.edu with password as the password</h1>
+      <h1>There is an admin user created. Use admin@osu.edu with password as the password</h1>
       <ul>
-	<li><%= link_to "Register Now", new_user_registration_path, :class => "btn btn-default text-center" %><li>
+	      <li><%= link_to "Register Now", new_user_registration_path, :class => "btn btn-default text-center" %><li>
         <li>This is the index page which will provide you with instructions and how to use our website</li>
         <li>For team members: In order to get more information, please go to app/views/welcomes/index.html.erb</li>
         <li>Use the navigation bar above to get to the sign up and log in pages</li>
-        <li>Easy access to the index of peer evaluaton: <a href="/evaluations">Peer evaluation</a></li>
       </ul>
 
 <% end %>

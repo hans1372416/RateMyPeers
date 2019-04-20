@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
-
   before_action :set_course, only: [:show, :edit, :destroy]
+  before_action :authenticate_user!
 
 
   # GET /courses/new
@@ -15,7 +15,7 @@ class CoursesController < ApplicationController
       redirect_to welcomes_path
     end
     # new course add page
-    @course = Course.new
+    @course = current_user.courses.build
   end
 
   # GET /courses
@@ -30,7 +30,7 @@ class CoursesController < ApplicationController
       redirect_to welcomes_path
     end
     # show all courses
-    @courses = Course.all
+    @courses = Course.where(user_id: current_user)
   end
 
 
@@ -68,7 +68,7 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new(course_params)
+    @course = current_user.courses.build(course_params)
     # Creates a new course and saves it
     respond_to do |format|
       if @course.save

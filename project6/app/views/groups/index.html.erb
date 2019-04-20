@@ -24,11 +24,9 @@
            <% if current_user.membership_ids.include? group.membership_ids[i] %>
       	      <tr>
                  <td><%= group.gname %></td>
-	         <td><%= group.membership_ids.length %></td>
+	               <td><%= group.membership_ids.length %></td>
                  <td><%= Course.find(group.course_id).cname %></td>
-                 <td><%= link_to 'Show', group %>
-		     <%= link_to 'Available Evaluations', evaluations_path %>
-		 </td>
+                 <td><%= link_to 'Show', group %></td>
               </tr>
            <% end %>
         <% end %>
@@ -43,37 +41,6 @@
                 <td><%= group.membership_ids.length %></td>
                 <td><%= Course.find(group.course_id).cname %></td>
                 <td><%= link_to 'Show', memberships_path(:group_id => group.id), :class => "btn btn-default" %>
-
-                    <!-- Check if all evals previously sent out are completed --> 
-                    <% evalsCheck = true %>
-                    <% for i in 0...group.evaluation_ids.length %>
-                        <% if Evaluation.find(group.evaluation_ids[i]).attempt == false %>
-                          <% evalsCheck = false %>
-                        <% end %>
-                    <% end %>
-
-                    <!-- Show option to send evals to students group if all other evals sent out have been completed only -->
-                    <% if group.evaluation_ids.empty? || evalsCheck %>
-                      <% if group.membership_ids.length > 1 %>
-                        <%= link_to 'Send Evaluations to Students', new_welcome_path(:group_id => group.id), data: { confirm: 'Are you sure you want to request evaluations for ' + group.gname + '?'}, :class => "btn btn-default" %><br>
-                      <% end %>
-                    <% end %>
-
-                    <%= link_to 'Add Member', new_membership_path(:group_id => group.id), :class => "btn btn-primary" %>
-                 
-                    <!-- Show evaluation results if any exist -->
-                    <% resultsExist = false %>
-                    <% for i in 0...group.evaluation_ids.length %>
-                      <% if Evaluation.find(group.evaluation_ids[i]).attempt == true %>
-                        <% resultsExist = true %>
-                      <% end %>
-                    <% end %>
-
-                    <!-- Show option to see evaluation results if they exist --> 
-                    <% if resultsExist %>
-                      <%= link_to 'Results', ratings_path(:group_id => group.id), :class => "btn btn-primary" %>
-                    <% end %>
-
                     <%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure you want to delete ' + group.gname + '?'}, :class => "btn btn-danger" %>
                 </td>
           <% end %>
@@ -83,7 +50,5 @@
   </tbody>
 </table>
 
-<br>
-<%= link_to 'Memberships', memberships_path, :class => "btn btn-default" %><br>
-<%= link_to 'Back to Groups', groups_path, :class => "btn btn-default" %><br>
-<%= link_to 'Back to Classes', courses_path, :class => "btn btn-default" %>
+<br><%= link_to 'Back to Groups', groups_path, :class => "btn btn-default" %>
+<br><%= link_to 'Back to Classes', courses_path, :class => "btn btn-default" %>
