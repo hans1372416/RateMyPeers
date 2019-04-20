@@ -18,7 +18,8 @@
 
   <div class="field">
     <%= form.label "Group" %>
-    <%= form.text_field :group_id, :value => Group.find(params[:group_id]).id, :readonly => true %>
+    <%= Group.find(params[:group_id]).gname %>
+    <%= form.hidden_field :group_id, :value => Group.find(params[:group_id]).id, :readonly => true %>
   </div>
 
   <div class="actions">
