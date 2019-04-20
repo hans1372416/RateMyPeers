@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   get  '/signup', to: 'welcomes#signup'
   get  '/login', to: 'welcomes#login'
 
+
+
 end
+# controllers {sesions: "users/sessions"}

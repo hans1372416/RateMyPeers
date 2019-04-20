@@ -8,10 +8,15 @@ class [scope]::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  POST /resource/sign_in
+  def create
+    @user = User.new(params[:user])
+
+   super do |resource|
+      UserMailer.with(user: @user).password_reset.deliver
+
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy
