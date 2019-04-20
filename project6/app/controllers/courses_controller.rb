@@ -48,6 +48,7 @@ class CoursesController < ApplicationController
     end
     # show all groups for a course
     @groups = Group.where(course_id: @course.id).all||nil
+
   end
 
 
@@ -69,6 +70,8 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = current_user.courses.build(course_params)
+    @course.semester = params[:semester]
+
     # Creates a new course and saves it
     respond_to do |format|
       if @course.save
