@@ -2,22 +2,6 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :destroy]
   before_action :authenticate_user!
 
-
-  # GET /courses/new
-  def new
-   # URL redirection to home page if user is not signed in
-    if !user_signed_in?
-      redirect_to welcomes_path
-    end
-
-    # URL redirection to homepage if user signed in is not admin
-    if user_signed_in? and !current_user.try(:admin?)
-      redirect_to welcomes_path
-    end
-    # new course add page
-    @course = current_user.courses.build
-  end
-
   # GET /courses
   # GET /courses.json
   def index
@@ -51,7 +35,20 @@ class CoursesController < ApplicationController
 
   end
 
+  # GET /courses/new
+  def new
+   # URL redirection to home page if user is not signed in
+    if !user_signed_in?
+      redirect_to welcomes_path
+    end
 
+    # URL redirection to homepage if user signed in is not admin
+    if user_signed_in? and !current_user.try(:admin?)
+      redirect_to welcomes_path
+    end
+    # new course add page
+    @course = current_user.courses.build
+  end
 
   # GET /courses/1/edit
   def edit

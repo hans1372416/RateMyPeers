@@ -22,14 +22,14 @@ ActiveRecord::Schema.define(version: 2019_04_19_160605) do
 
   create_table "groups", force: :cascade do |t|
     t.string "gname"
-    t.string "course_id"
+    t.integer "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "memberships", force: :cascade do |t|
-    t.string "user_id"
-    t.string "group_id"
+    t.integer "user_id"
+    t.integer "group_id"
     t.string "q1"
     t.string "q2"
     t.string "q3"

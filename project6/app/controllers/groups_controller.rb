@@ -1,4 +1,4 @@
-class GroupsController < ApplicationController
+ class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   # GET /groups
@@ -18,7 +18,6 @@ class GroupsController < ApplicationController
     if !user_signed_in?
       redirect_to welcomes_path
     end
-
   end
 
   # GET /groups/new
