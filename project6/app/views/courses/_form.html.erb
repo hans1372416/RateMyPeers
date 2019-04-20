@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+  <% semester =[['SP19','SP19'],['AU19','AU19'],['SP20','SP20']] %>
 
   <div class="field">
     <%= form.label :Name %>
@@ -18,8 +19,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :Semester %>
-    <%= form. :semester %>
+    <%= form.label :semester %>
+    <%= select_tag(:semester, options_for_select(semester), :prompt => "select the answer") %>
   </div>
 
   <div class="actions">
