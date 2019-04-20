@@ -38,6 +38,29 @@ background-color:#333;
 padding:10pt;
 font-weight:600;
 }
+
+table{
+border-collapse:collapse;
+}
+
+thead tr{
+background-color:white;
+}
+
+tbody tr:nth-child(even){
+background-color:white;
+}
+
+th{
+color:#F2F1E9;
+background-color:#F5765E;
+}
+
+td,th{
+padding:10pt;
+text-align:left;
+}
+
 /* start of nav */
 
 nav{
