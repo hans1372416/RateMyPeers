@@ -26,7 +26,9 @@
                  <td><%= group.gname %></td>
 	         <td><%= group.membership_ids.length %></td>
                  <td><%= Course.find(group.course_id).cname %></td>
-                 <td><%= link_to 'Show', group %></td>
+                 <td><%= link_to 'Show', group %>
+		     <%= link_to 'Available Evaluations', evaluations_path %>
+		 </td>
               </tr>
            <% end %>
         <% end %>
@@ -53,7 +55,7 @@
                     <!-- Show option to send evals to students group if all other evals sent out have been completed only -->
                     <% if group.evaluation_ids.empty? || evalsCheck %>
                       <% if group.membership_ids.length > 1 %>
-                        <%= link_to 'Send Evaluations to Students', welcomes_confirmation_path(:group_id => group.id), data: { confirm: 'Are you sure you want to request evaluations for ' + group.gname + '?'}, :class => "btn btn-default" %><br>
+                        <%= link_to 'Send Evaluations to Students', new_welcome_path(:group_id => group.id), data: { confirm: 'Are you sure you want to request evaluations for ' + group.gname + '?'}, :class => "btn btn-default" %><br>
                       <% end %>
                     <% end %>
 
