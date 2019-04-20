@@ -73,13 +73,6 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    # Remove all evaluations for a selected group
-    Evaluation.all.collect.each do |eval|
-      if evaluation.group_id == @group.id
-        evaluation.destroy
-      end
-    end
-
     # Remove all Ratings for a selected group
     Rating.all.collect.each do |rating|
       if rating.group_id == @group.id

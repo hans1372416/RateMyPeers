@@ -10,21 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_19_185003) do
+ActiveRecord::Schema.define(version: 2019_04_19_160605) do
 
   create_table "courses", force: :cascade do |t|
     t.string "cname"
     t.string "semester"
     t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "evaluations", force: :cascade do |t|
-    t.boolean "attempt"
-    t.integer "rater_id"
-    t.integer "ratee_id"
-    t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,18 +40,18 @@ ActiveRecord::Schema.define(version: 2019_04_19_185003) do
 
   create_table "ratings", force: :cascade do |t|
     t.integer "group_id"
+    t.integer "rater_id"
+    t.integer "ratee_id"
     t.float "score"
     t.string "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "eval_id"
-    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.boolean "admin", default: false
+    t.boolean "admin", default: false, null: false
     t.string "name"
     t.string "Fname"
     t.string "Lname"
