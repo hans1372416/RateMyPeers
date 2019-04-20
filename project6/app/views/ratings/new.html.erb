@@ -2,3 +2,28 @@
 
 <%= render 'form', rating: @rating %>
 
+<div class="eval">
+  <h1>Peer Evaluation for John Smith</h1>
+  <h3>Group Name - Class Name</h3>
+
+  <form>
+    <div class="slide-container">
+      <label>Overall Rating: <br> <span class="score"></span></label>
+      <input type="range" min="0" max="10" value="5" class="slider">
+    </div><br><br>
+    <label>Comments on John's Performance:</label>
+    <textarea name="name" rows="8"></textarea><br><br><br>
+    <label>Would you choose to work with John again in another group?</label>
+    <input type="radio" name="yes" checked><label for="radio">Yes</label>
+    <input type="radio" name="yes" ><label for="radio">No</label><br><br><br>
+    <input type="submit" name="" value="Submit Evaluation">
+
+  </form>
+</div>
+  </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+  $(".slide-container .score").text($(".slider").val());
+  $(".slider").on("input",function(){$(".slide-container .score").text($(".slider").val());})
+</script>
