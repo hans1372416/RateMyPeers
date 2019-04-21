@@ -21,6 +21,7 @@
 				<% @rating = Rating.new(:group_id => @group.id, :user_id => current_user.id, :ratee_id => @members[n].id) %> 
 				<% @rating.save %>
 			<% end %>
+			Score: <%# Rating.find(Membership.find(@group_membership_ids[i]).user_id).score %>
 			<%= link_to 'Rate', new_rating_path(:rating_id => @rating.id) %>
          </strong><br>
       <% end %>

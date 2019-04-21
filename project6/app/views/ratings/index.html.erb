@@ -13,22 +13,20 @@
   </thead>
 
   <tbody>
-    <% @ratings.each do |rating| %>
+    <% @ratings.each do |r| %>
       <tr>
         <% if ratings.group_id == Group.find(params[:group_id]).id %>
-        <td><%= User.find(Rating.user_id).email %></td>
-        <td><%= User.find(Rating.ratee_id).email %></td>
-        <td><%= Group.find(Rating.group_id).gname %></td>
-        <td><%= Rating.score %></td>
-        <td><%= Rating.comments %></td>
-        <td><%= Rating.created_at.strftime("%m-%d-%Y") %></td>
+          <td><%= User.find(Rating.user_id).email %></td>
+          <td><%= User.find(Rating.ratee_id).email %></td>
+          <td><%= Group.find(Rating.group_id).gname %></td>
+          <td><%= r.score %></td>
+          <td><%= r.comments %></td>
+          <td><%= r.created_at.strftime("%m-%d-%Y") %></td>
         <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'Back', groups_path, :class => "btn btn-default" %>
+<br><%= link_to 'Back', groups_path, :class => "btn btn-default" %>
 

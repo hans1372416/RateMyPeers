@@ -11,9 +11,23 @@
     </div>
   <% end %>
 
-  <h2>Rater: <%= current_user.email %></h2>
-  <h2>Ratee: <%# User.find(params[:ratee_id]).name %></h2>
-  <h2>Group: <%# Group.find(params[:group_id]).gname %></h2>
+  <div class="field">
+    <%= form.label "Rater:" %>
+    <%= current_user.email %>
+    <%= form.hidden_field :user_id, :value => Rating.find(params[:rating_id]).user_id, :readonly =>true %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Ratee:" %>
+    <%# current_user.email %>
+    <%= form.hidden_field :ratee_id, :value => Rating.find(params[:rating_id]).ratee_id, :readonly =>true %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Group::" %>
+    <%# current_user.email %>
+    <%= form.hidden_field :group_id, :value => Rating.find(params[:rating_id]).group_id, :readonly =>true %>
+  </div>
 
   <div class="field">
     <%= form.label :score %><br>
