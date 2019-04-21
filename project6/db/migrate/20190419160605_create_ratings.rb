@@ -7,6 +7,7 @@ class CreateRatings < ActiveRecord::Migration[5.2]
     t.integer :ratee_id
     t.float :score
     t.string :comments
+    t.boolean :attempted
     t.datetime :created_at
     t.datetime :updated_at
       t.timestamps

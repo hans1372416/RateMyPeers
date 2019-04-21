@@ -3,15 +3,15 @@
  
 <h1>Groups:</h1>
 <% if @course.group_ids.length == 0 %>
-  <h2>There are currently no groups in this class</h2>
+	<h2>There are currently no groups in this class</h2>
 <% end %>
 
 <%# TODO: add functionality to link directly to groups %>
 <%# idea: link_to ' Group.find(@course.group_ids[i]).gname', show_group_path(:group_id => @group.id) %>
 
 <% for i in 0...@course.group_ids.length %>
-  <h2><%= Group.find(@course.group_ids[i]).gname %></h2>
+	<h2><%= Group.find(@course.group_ids[i]).gname %></h2>
 <% end %>
 
 <br><%= link_to 'Create New Group', new_group_path(:course_id => @course.id), :class => "btn btn-default" %>
-<br><%= link_to 'Back to Courses', courses_path, :class => "btn btn-default" %>
+<br><%= link_to 'Back to Classes', courses_path, :class => "btn btn-default" %>

@@ -1,8 +1,4 @@
-<% if !current_user.try(:admin?) %>
-  <h1>Classes</h1>
-<% else %>
-  <h1>Manage Classes</h1>
-<% end %>
+<h1>Classes</h1>
 
 <table>
   <thead>
@@ -34,7 +30,7 @@
 
 <br>
 <% if current_user.try(:admin?) %>
-  <%= link_to 'New Course', new_course_path %></br>
+  <%= link_to 'New Class', new_course_path %></br>
   <%= link_to 'Go to Groups', groups_path %>
 <% end %>
 

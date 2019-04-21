@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_04_19_160605) do
     t.integer "ratee_id"
     t.float "score"
     t.string "comments"
+    t.boolean "attempted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
