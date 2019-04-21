@@ -39,6 +39,7 @@
           <td><%= group.membership_ids.length %></td>
           <td><%= Course.find(group.course_id).cname %></td>
           <td><%= link_to 'Show', memberships_path(:group_id => group.id), :class => "btn btn-default" %>
+              <%= link_to 'Send Evaluations', new_welcome_path(:group_id => group.id), :class => "btn btn-default" %>
               <%= link_to 'Add Member', new_membership_path(:group_id => group.id), :class => "btn btn-primary" %>
               <%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure you want to delete ' + group.gname + '?'}, :class => "btn btn-danger" %></td>
         </tr>
