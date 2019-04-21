@@ -10,7 +10,7 @@
 			<%= User.find(Membership.find(@group.membership_ids[i]).user_id).Fname %>
 			<%= User.find(Membership.find(@group.membership_ids[i]).user_id).Lname %>
 			Score: <%# Rating.find(Membership.find(@group_membership_ids[i]).user_id).score %>
-			<%= link_to 'Rate', new_rating_path(:rating_id => @rating.id) %><br>
+			<%= link_to 'Rate', edit_rating_path(:rater_id => current_user.id, :ratee_id => @group.membership_id)%><br>
 		<% end %>
 	<% end %>
 
@@ -36,10 +36,12 @@
 					<% @members.push user %> 
 				<% end %>
 			<% end %>
-
-			<% @members.each_with_index do |member, n|  %>
-				<% @rating = Rating.new(:group_id => @group.id, :user_id => current_user.id, :ratee_id => @members[n].id) %> 
-				<% @rating.save %>
+ 
+ 			<% @members.each_with_index do |member, i| %>
+				<% @members.each_with_index do |member, n|  %>
+					<% @rating = Rating.new(:group_id => @group.id, :user_id => @members[i].id, :ratee_id => @members[n].id) %> 
+					<% @rating.save %>
+				<% end %>
 			<% end %>
     <% end %>
     <br><%= link_to 'Back to Groups', groups_path, :class => "btn btn-default" %>
