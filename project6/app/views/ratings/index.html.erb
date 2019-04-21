@@ -16,7 +16,7 @@
     <% @ratings.each do |rating| %>
       <tr>
         <% if ratings.group_id == Group.find(params[:group_id]).id %>
-        <td><%= User.find(Rating.rater_id).email %></td>
+        <td><%= User.find(Rating.user_id).email %></td>
         <td><%= User.find(Rating.ratee_id).email %></td>
         <td><%= Group.find(Rating.group_id).gname %></td>
         <td><%= Rating.score %></td>

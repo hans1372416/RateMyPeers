@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <h2>Rater: <%= User.find(params[:rater_id]).name %></h2>
+  <h2>Rater: <%= User.find(params[:user_id]).name %></h2>
   <h2>Ratee: <%= User.find(params[:ratee_id]).name %></h2>
   <h2>Group: <%= Group.find(params[:group_id]).gname %></h2>
 

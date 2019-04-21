@@ -11,22 +11,19 @@
          	<%= User.find(Membership.find(@group.membership_ids[i]).user_id).Lname %>
          	<% @users = User.all.collect %>
 			<% @members = [] %>
-			Test1
 			<% @users.each do |user| %>
-				<% if user.membership_ids.include? Group.find(params[:group_id]).membership_ids[i] %>
-					<% @members.push user %>
+				<% if user.membership_ids.include? @group.membership_ids[i] %>
+					<% @members.push user %> 
+					<%= @members %>
 				<% end %>
 			<% end %>
 
-			<% for i in 0...@members.length %>
-				<% for j in 0...@members.length %>
-					<% if i != j %>
-						<% @new_rating = Rating.new(:group_id => Group.find(params[:group_id]).id, :rater_id => @members[i].id, :ratee_id => @members[j].id) %>
-						<% @new_rating.save %>
-					<% end %>
-				<% end %>
+			<% @members.each_with_index do |member, n|  %>
+				<% @rating = Rating.new(:group_id => @group.id, :user_id => current_user.id, :ratee_id => @members[n].id) %> 
+				<%= @rating %>
+				<% @rating.save %>
 			<% end %>
-			<%= link_to 'Rate', ratings_new_path(:group_id => @group.id) %>
+			<%= link_to 'Rate', new_rating_path(:rating_id => @rating.id) %>
          </strong><br>
       <% end %>
    <% end %><br>
