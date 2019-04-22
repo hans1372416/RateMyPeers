@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_19_160605) do
+ActiveRecord::Schema.define(version: 2019_04_22_050913) do
 
   create_table "courses", force: :cascade do |t|
     t.string "cname"
@@ -20,9 +20,19 @@ ActiveRecord::Schema.define(version: 2019_04_19_160605) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "evaluates", force: :cascade do |t|
+    t.boolean "attempt"
+    t.integer "user_id"
+    t.integer "ratee_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "gname"
     t.integer "course_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,21 +40,16 @@ ActiveRecord::Schema.define(version: 2019_04_19_160605) do
   create_table "memberships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
-    t.string "q1"
-    t.string "q2"
-    t.string "q3"
-    t.string "q4"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "group_id"
+    t.integer "evaluate_id"
     t.integer "user_id"
-    t.integer "ratee_id"
+    t.integer "group_id"
     t.float "score"
     t.string "comments"
-    t.boolean "attempted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

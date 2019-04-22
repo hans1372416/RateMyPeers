@@ -18,6 +18,7 @@
     if !user_signed_in?
       redirect_to welcomes_path
     end
+
   end
 
   # GET /groups/new
@@ -72,6 +73,12 @@
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
+    Evaluate.all.collect.each do |evaluate|
+      if evaluate.group_id == @group.id
+        evaluate.destroy
+      end
+    end
+
     # Remove all Ratings for a selected group
     Rating.all.collect.each do |rating|
       if rating.group_id == @group.id
@@ -100,6 +107,6 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:gname, :course_id)
+      params.require(:group).permit(:gname, :course_id, :user_id)
     end
 end

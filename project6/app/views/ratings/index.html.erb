@@ -1,5 +1,6 @@
 <h1>Rating</h1>
 
+<%# if (@rating.group_id == Group.find(params[:group_id]).id) and (@rating.attempted == true) %>
 <table>
   <thead>
     <tr>
@@ -15,18 +16,19 @@
   <tbody>
     <% @ratings.each do |r| %>
       <tr>
-        <% if @ratings.group_id == Group.find(params[:group_id]).id %>
-          <td><%= User.find(Rating.user_id).email %></td>
-          <td><%= User.find(Rating.ratee_id).email %></td>
-          <td><%= Group.find(Rating.group_id).gname %></td>
+        <% if (r.group_id == Group.find(params[:group_id]).id) %>
+          <td><%= User.find(r.user_id).Fname %><% User.find(r.user_id).Lname %></td>
+          <td><%= User.find(Evaluate.find(r.evaluate_id).ratee_id).Fname %><% User.find(Evaluate.find(r.evaluate_id).ratee_id).Lname %></td>
+          <td><%= Group.find(r.group_id).gname %></td>
           <td><%= r.score %></td>
           <td><%= r.comments %></td>
           <td><%= r.created_at.strftime("%m-%d-%Y") %></td>
-        <% end %>
+          <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%# end %>
 
 <br><%= link_to 'Back', groups_path, :class => "btn btn-default" %>
 

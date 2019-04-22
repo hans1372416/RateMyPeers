@@ -2,44 +2,8 @@
 <% if @group.membership_ids.length == 0 %>	
     <%= "There are currently no members in this group" %>	
 <% else %>	
-<table>
-	<thead>
-	<tr>
-		<th>Name</th>
-		<th>Score</th>
-		<th>Comments</th>
-		<th>Actions</th>
-	</tr>
-	</thead>
-	<tbody>
-	<% for i in 0...@group.membership_ids.length %>
-		<% @users = User.all.collect %>
-			<% @members = [] %>
-			<% @users.each do |user| %>
-				<% if user.membership_ids.include? @group.membership_ids[i] %>
-					<% @members.push user %> 
-				<% end %>
-			<% end %>
-
-			<% @members.each_with_index do |member, n|  %>
-				<% @rating = Rating.new(:group_id => @group.id, :user_id => current_user.id, :ratee_id => @members[n].id, :attempted => false) %> 
-				<% @rating.save %>
-			<% end %>
-	<tr>
-		<td><%= User.find(Membership.find(@group.membership_ids[i]).user_id).Fname %> <%= User.find(Membership.find(@group.membership_ids[i]).user_id).Lname %></td>
-		<td><% @members.each_with_index do |member, n| %>hi
-			<% end %>
-		</td>
-		<td></td>
-		<td><% @members.each_with_index do |member, n|  %>
-			<% if @members[n].id != current_user.id %>
-				<%= link_to 'Rate', new_rating_path(:rating_id => @rating.id) %>
-			<% end %>
-			<% end %>
-		</td>
-	</tr>
-	<% end %>
-	</tbody>
-</table>
+<% for i in 0...@group.membership_ids.length %>
+	<%= User.find(Membership.find(@group.membership_ids[i]).user_id).Fname %> <%= User.find(Membership.find(@group.membership_ids[i]).user_id).Lname %><br>
+<% end %>
 <% end %>
     <br><%= link_to 'Back to Groups', groups_path, :class => "btn btn-default" %>

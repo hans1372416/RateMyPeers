@@ -10,25 +10,25 @@
       </ul>
     </div>
   <% end %>
-  <% if current_user.try(:admin?) and @group.membership_ids.length > 1 %>
-  <h1> Evaluations sent! </h1>
-  <% for i in 0...@group.membership_ids.length %>
-    <% @users = User.all.collect %>
-      <% @members = [] %>
-      <% @users.each do |user| %>
-        <% if user.membership_ids.include? @group.membership_ids[i] %>
-          <% @members.push user %> 
-        <% end %>
-      <% end %>
- 
-      <% @members.each_with_index do |member, i| %>
-        <% @members.each_with_index do |member, n|  %>
-          <% @rating = Rating.new(:group_id => @group.id, :user_id => @members[i].id, :ratee_id => @members[n].id) %> 
-          <% @rating.save %>
-        <% end %>
-      <% end %>
+  <h1>Evaluations created!</h1>
+
+  <% @users = User.all.collect %>
+  <% @members = [] %>
+  <% for i in 0...Group.find(params[:group_id]).membership_ids.length %>
+    <% @users.each do |user| %>
+      <% if user.membership_ids.include? Group.find(params[:group_id]).membership_ids[i] %>
+      <% @members.push user %>
     <% end %>
-    <br><%= link_to 'Back to Groups', groups_path, :class => "btn btn-default" %>
+    <% end %>
+  <% end %>
+
+  <% @members.each_with_index do |member, n|  %>
+    <% @members.each_with_index do |member, m| %>
+      <% @eval = Evaluate.new(:group_id => Group.find(params[:group_id]).id, :user_id => @members[n].id, :ratee_id => @members[m].id, :attempt => false) %>
+      <% @eval.save %>
+    <% end %>
+  <% end %>
+
+  <br><%= link_to 'Back to Groups', groups_path, :class => "btn btn-default" %>
   <br><%= link_to 'Back to Classes', courses_path, :class => "btn btn-default" %>
-<% end %>
 <% end %>
