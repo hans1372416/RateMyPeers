@@ -12,21 +12,20 @@
   <% end %>
 
   <div class="field">
+    <%= form.hidden_field :evaluate_id, :value => Evaluate.find(params[:evaluate_id]).id, :readonly =>true %>
+  </div>
+
+  <div class="field">
     <%= form.label "Rater:" %>
-    <%= current_user.email %>
-    <%# form.hidden_field :user_id, :value => Rating.find(params[:rating_id]).user_id, :readonly =>true %>
+    <%= User.find(Evaluate.find(params[:evaluate_id]).user_id).Fname %> <%= User.find(Evaluate.find(params[:evaluate_id]).user_id).Lname %>
+    <%= form.hidden_field :ratee_id, :value => Evaluate.find(params[:evaluate_id]).user_id, :readonly =>true %>
   </div>
+   <%= User.find(Evaluate.find(params[:evaluate_id]).ratee_id).Fname %> <%= User.find(Evaluate.find(params[:evaluate_id]).ratee_id).Lname %><br>
 
   <div class="field">
-    <%= form.label "Ratee:" %>
-    <%# current_user.email %>
-    <%# form.hidden_field :ratee_id, :value => Rating.find(params[:rating_id]).ratee_id, :readonly =>true %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Group::" %>
-    <%# current_user.email %>
-    <%# form.hidden_field :group_id, :value => Rating.find(params[:rating_id]).group_id, :readonly =>true %>
+    <%= form.label "Group:" %>
+    <%= Group.find(Evaluate.find(params[:evaluate_id]).group_id).gname %>
+    <%= form.hidden_field :group_id, :value => Evaluate.find(params[:evaluate_id]).group_id, :readonly =>true %>
   </div>
 
   <div class="field">
@@ -41,7 +40,7 @@
 
   <div class="actions">
     <%= form.submit "Submit Evaluation", :class => "btn btn-primary" %>
-    <%= link_to 'Back', groups_path, :class => "btn btn-default" %>
+    <%= link_to 'Back', evaluates_path, :class => "btn btn-default" %>
   </div>
 
 <% end %>

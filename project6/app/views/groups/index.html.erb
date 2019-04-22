@@ -15,7 +15,6 @@
   </thead>
 
   <tbody>
-    <!-- If user signed is not an admin but is part of the group, show only group name and members --> 
     <% @groups.each do |group| %>
       <% if user_signed_in? and !current_user.try(:admin?) %>
       	<% for i in 0...group.membership_ids.length %>
@@ -24,7 +23,8 @@
                  <td><%= group.gname %></td>
 	               <td><%= group.membership_ids.length %></td>
                  <td><%= Course.find(group.course_id).cname %></td>
-                 <td><%= link_to 'Show',group, :class=>"action"%></td>
+                 <td><%= link_to 'Show',group, :class=>"action" %>
+                 </td>
               </tr>
            <% end %>
         <% end %>
@@ -40,36 +40,32 @@
           <td><%= Course.find(group.course_id).cname %></td>
           <td><%= link_to 'Show', memberships_path(:group_id => group.id), :class=>"action"%>
                   
-                  <!-- Check if all evals previously sent out are completed --> 
-                  <% evalsFinished = true %>
-                  <% for i in 0...group.rating_ids.length %>
-                      <% if Rating.find(group.rating_ids[i]).attempted == false %>
+              <% evalsFinished = true %>
+                  <% for i in 0...group.evaluate_ids.length %>
+                      <% if Evaluate.find(group.evaluate_ids[i]).attempt == false %>
                         <% evalsFinished = false %>
                       <% end %>
                   <% end %>
-<!-- Show option to send evals to students group if all other evals sent out have been completed only -->
-                  <% if group.rating_ids.empty? || evalsFinished %>
+
+                  <% if group.evaluate_ids.empty? || evalsFinished %>
                   <% if group.membership_ids.length > 1 %>
-                    <%= link_to 'Send Evaluations', group, data: { confirm: 'Are you sure you want to open evaluations for ' + group.gname + '?'}, :class=>"action" %>
+                    <%= link_to 'Send Evaluations to Students', new_welcome_path(:group_id => group.id), data: { confirm: 'Are you sure you want to open evaluations for ' + group.gname + '?'}, :class => "btn btn-default" %><br>
                   <% end %>
                   <% end %>
 
-                  <!-- Show buttons to add new members to groups -->
-                  <%= link_to 'Add Member', new_membership_path(:group_id => group.id), :class=>"action" %>
-
-                  <!-- Show evaluation results if any exist -->
                   <% resultsExist = false %>
-                  <% for i in 0...group.rating_ids.length %>
-                    <% if Rating.find(group.rating_ids[i]).attempted == true %>
+                  <% for i in 0...group.evaluate_ids.length %>
+                    <% if Evaluate.find(group.evaluate_ids[i]).attempt == true %>
                       <% resultsExist = true %>
                     <% end %>
                   <% end %>
 
-                  <!-- Show option to see evaluation results if they exist --> 
                   <% if resultsExist %>
-                    <%= link_to 'Results', ratings_path(:group_id => group.id), :class=>"action" %>
+                    <%= link_to 'Results', results_path(:group_id => group.id), :class => "btn btn-primary" %>
                   <% end %>
-              <%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure you want to delete ' + group.gname + '?'}, :class=>"action" %></td>
+
+              <%= link_to 'Add Member', new_membership_path(:group_id => group.id), :class => "btn btn-primary" %>
+              <%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure you want to delete ' + group.gname + '?'}, :class => "btn btn-danger" %></td>
         </tr>
       <% end %>
     <% end %>

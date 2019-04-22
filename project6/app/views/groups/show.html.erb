@@ -1,49 +1,9 @@
-
-<% if !current_user.try(:admin?) %>
-	<h1><%= @group.gname %></h1>
-
-	<h2><strong>Members:</strong></h2>
-	<% if @group.membership_ids.length == 0 %>
-		<%= "There are currently no members in this group" %>
-	<% else %>
-		<% for i in 0...@group.membership_ids.length %>
-			<%= User.find(Membership.find(@group.membership_ids[i]).user_id).Fname %>
-			<%= User.find(Membership.find(@group.membership_ids[i]).user_id).Lname %>
-			Score: <%# Rating.find(Membership.find(@group_membership_ids[i]).user_id).score %>
-			<%= link_to 'Rate', edit_rating_path(:rater_id => current_user.id, :ratee_id => @group.membership_ids)%><br>
-		<% end %>
-	<% end %>
-
-	<br><%= link_to 'Back to Groups', groups_path%>
-	<br><%= link_to 'Back to Classes', courses_path%>
+<h1><%= @group.gname %></h1>
+<% if @group.membership_ids.length == 0 %>	
+    <%= "There are currently no members in this group" %>	
+<% else %>	
+<% for i in 0...@group.membership_ids.length %>
+	<%= User.find(Membership.find(@group.membership_ids[i]).user_id).Fname %> <%= User.find(Membership.find(@group.membership_ids[i]).user_id).Lname %><br>
 <% end %>
-
-<% if current_user.try(:admin?) and @group.membership_ids.length == 0 %>
-	<h1><%= @group.gname %></h1>
-	<h2><strong>Members:</strong></h2>
-	<%= "There are currently no members in this group" %>
-	<br><%= link_to 'Back to Groups', groups_path %>
-	<br><%= link_to 'Back to Classes', courses_path %>
 <% end %>
-
-<% if current_user.try(:admin?) and @group.membership_ids.length > 1 %>
-	<h1> Evaluations sent! </h1>
-	<% for i in 0...@group.membership_ids.length %>
-		<% @users = User.all.collect %>
-			<% @members = [] %>
-			<% @users.each do |user| %>
-				<% if user.membership_ids.include? @group.membership_ids[i] %>
-					<% @members.push user %> 
-				<% end %>
-			<% end %>
- 
- 			<% @members.each_with_index do |member, i| %>
-				<% @members.each_with_index do |member, n|  %>
-					<% @rating = Rating.new(:group_id => @group.id, :user_id => @members[i].id, :ratee_id => @members[n].id) %> 
-					<% @rating.save %>
-				<% end %>
-			<% end %>
-    <% end %>
     <br><%= link_to 'Back to Groups', groups_path, :class => "btn btn-default" %>
-	<br><%= link_to 'Back to Classes', courses_path, :class => "btn btn-default" %>
-<% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :evaluates
   resources :ratings
   resources :courses
   resources :groups

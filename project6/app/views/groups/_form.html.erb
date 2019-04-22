@@ -14,6 +14,7 @@
   <div class="field">
     <%= form.label :Name %>
     <%= form.text_field :gname %>
+    <%= form.hidden_field :user_id, :value => current_user.id  %>
     <%= form.hidden_field :course_id, :value => Course.find(params[:course_id]).id  %>
   </div>
 
