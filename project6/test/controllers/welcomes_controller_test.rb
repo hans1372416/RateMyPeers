@@ -10,11 +10,6 @@ class WelcomesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_welcome_url
-    assert_response :success
-  end
-
   test "should create welcome" do
     assert_difference('Welcome.count') do
       post welcomes_url, params: { welcome: {  } }
@@ -28,10 +23,6 @@ class WelcomesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_welcome_url(@welcome)
-    assert_response :success
-  end
 
   test "should update welcome" do
     patch welcome_url(@welcome), params: { welcome: {  } }

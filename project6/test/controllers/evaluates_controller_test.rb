@@ -16,11 +16,8 @@ class EvaluatesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create evaluate" do
-    assert_difference('Evaluate.count') do
-      post evaluates_url, params: { evaluate: { attempt: @evaluate.attempt, group_id: @evaluate.group_id, ratee_id: @evaluate.ratee_id, user_id: @evaluate.user_id } }
-    end
-
-    assert_redirected_to evaluate_url(Evaluate.last)
+    get "/evaluates/new"
+    assert_response :redirect
   end
 
   test "should show evaluate" do

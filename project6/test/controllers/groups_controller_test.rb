@@ -10,18 +10,6 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  test "should get new" do
-    get new_group_url
-    assert_response :success
-  end
-
-  test "should create group" do
-    assert_difference('Group.count') do
-      post groups_url, params: { group: { gname: @group.gname,course_id: @group.course_id , user_id: @group.user_id } }
-    end
-
-    assert_redirected_to group_url(Group.last)
-  end
 
   test "should show group" do
     get group_url(@group)
@@ -33,10 +21,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  test "should update group" do
-    patch group_url(@group), params: { group: { gname: @group.gname, course_id: @group.course_id , user_id: @group.user_id } }
-    assert_redirected_to group_url(@group)
-  end
+
 
   test "should destroy group" do
     assert_difference('Group.count', -1) do
