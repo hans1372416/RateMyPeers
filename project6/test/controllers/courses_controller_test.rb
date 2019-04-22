@@ -7,7 +7,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     get courses_url
-    assert_response :success
+    assert_response :redirect
   end
 
   test "should get new" do
@@ -17,7 +17,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create course" do
     assert_difference('Course.count') do
-      post courses_url, params: { course: { class_id: @course.class_id, instructor: @course.instructor } }
+      post courses_url, params: { course: { cname: @course.cname, semester: @course.semester, user_id: @course.user_id } }
     end
 
     assert_redirected_to course_url(Course.last)
@@ -25,16 +25,16 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
   test "should show course" do
     get course_url(@course)
-    assert_response :success
+    assert_response :redirect
   end
 
   test "should get edit" do
     get edit_course_url(@course)
-    assert_response :success
+    assert_response :redirect
   end
 
   test "should update course" do
-    patch course_url(@course), params: { course: { class_id: @course.class_id, instructor: @course.instructor } }
+    patch course_url(@course), params: { course: { cname: @course.cname, semester: @course.semester, user_id: @course.user_id } }
     assert_redirected_to course_url(@course)
   end
 
