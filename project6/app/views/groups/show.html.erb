@@ -10,20 +10,20 @@
 			<%= User.find(Membership.find(@group.membership_ids[i]).user_id).Fname %>
 			<%= User.find(Membership.find(@group.membership_ids[i]).user_id).Lname %>
 			Score: <%# Rating.find(Membership.find(@group_membership_ids[i]).user_id).score %>
-			<%= link_to 'Rate', edit_rating_path(:rater_id => current_user.id, :ratee_id => @group.membership_id)%><br>
+			<%= link_to 'Rate', edit_rating_path(:rater_id => current_user.id, :ratee_id => @group.membership_ids)%><br>
 		<% end %>
 	<% end %>
 
-	<br><%= link_to 'Back to Groups', groups_path, :class => "btn btn-default" %>
-	<br><%= link_to 'Back to Classes', courses_path, :class => "btn btn-default" %>
+	<br><%= link_to 'Back to Groups', groups_path%>
+	<br><%= link_to 'Back to Classes', courses_path%>
 <% end %>
 
 <% if current_user.try(:admin?) and @group.membership_ids.length == 0 %>
 	<h1><%= @group.gname %></h1>
 	<h2><strong>Members:</strong></h2>
 	<%= "There are currently no members in this group" %>
-	<br><%= link_to 'Back to Groups', groups_path, :class => "btn btn-default" %>
-	<br><%= link_to 'Back to Classes', courses_path, :class => "btn btn-default" %>
+	<br><%= link_to 'Back to Groups', groups_path %>
+	<br><%= link_to 'Back to Classes', courses_path %>
 <% end %>
 
 <% if current_user.try(:admin?) and @group.membership_ids.length > 1 %>

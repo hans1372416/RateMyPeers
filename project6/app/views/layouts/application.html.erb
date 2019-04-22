@@ -12,7 +12,11 @@
   <body>
 
       <% if user_signed_in? %>
-        <%= render "layouts/nav-user" %>
+        	<% if current_user.try(:admin?) %>
+			<%= render "layouts/nav-instructor" %>
+      		<% else %>
+      			<%= render "layouts/nav-user" %>
+      		<% end %>
       <% else %>
       	<%= render "layouts/nav-anon" %>
       <% end %>

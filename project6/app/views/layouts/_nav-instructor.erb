@@ -4,15 +4,16 @@
 	<%= link_to image_tag("logo.svg")%>
       </div>
       <%= link_to "RateMyPeers",root_path,class:"title" %>
-      <a href="#">Groups</a>
+	<%= link_to 'Groups', groups_path %>
+	<%= link_to 'Classes', courses_path %>
       <div class="user">
-        <a href="#" id="username">User Name</a>
+        <a href="" id="username"><%= current_user.email %></a>
           <div class="profile-pic">
                 <%= link_to image_tag("default-pic.svg")%>
           </div>
         <div class="options">
-          <a href="#">Settings</a>
-        <%= link_to "Log out", instructor_logout_path, method: :delete %>
+          <a href="/users/edit">Settings</a>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
         </div>
       </div>
     </div>

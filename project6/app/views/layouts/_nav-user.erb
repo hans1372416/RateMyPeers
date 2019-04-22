@@ -4,7 +4,7 @@
 	<%= link_to image_tag("logo.svg")%>
       </div>
       <%= link_to "RateMyPeers",root_path,class:"title" %>
-      <a href="#">Groups</a>
+      <%= link_to 'Groups', groups_path %>
       <div class="user">
         <a href="" id="username"><%= current_user.email %></a>
           <div class="profile-pic">

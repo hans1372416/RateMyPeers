@@ -24,7 +24,7 @@
                  <td><%= group.gname %></td>
 	               <td><%= group.membership_ids.length %></td>
                  <td><%= Course.find(group.course_id).cname %></td>
-                 <td><%= link_to 'Show', group, :class => "btn btn-default"  %></td>
+                 <td><%= link_to 'Show',group, :class=>"action"%></td>
               </tr>
            <% end %>
         <% end %>
@@ -38,7 +38,7 @@
           <td><%= group.gname %></td>
           <td><%= group.membership_ids.length %></td>
           <td><%= Course.find(group.course_id).cname %></td>
-          <td><%= link_to 'Show', memberships_path(:group_id => group.id), :class => "btn btn-default" %>
+          <td><%= link_to 'Show', memberships_path(:group_id => group.id), :class=>"action"%>
                   
                   <!-- Check if all evals previously sent out are completed --> 
                   <% evalsFinished = true %>
@@ -47,16 +47,15 @@
                         <% evalsFinished = false %>
                       <% end %>
                   <% end %>
-
-                  <!-- Show option to send evals to students group if all other evals sent out have been completed only -->
+<!-- Show option to send evals to students group if all other evals sent out have been completed only -->
                   <% if group.rating_ids.empty? || evalsFinished %>
                   <% if group.membership_ids.length > 1 %>
-                    <%= link_to 'Send Evaluations', group, data: { confirm: 'Are you sure you want to open evaluations for ' + group.gname + '?'}, :class => "btn btn-default" %><br>
+                    <%= link_to 'Send Evaluations', group, data: { confirm: 'Are you sure you want to open evaluations for ' + group.gname + '?'}, :class=>"action" %>
                   <% end %>
                   <% end %>
 
                   <!-- Show buttons to add new members to groups -->
-                  <%= link_to 'Add Member', new_membership_path(:group_id => group.id), :class => "btn btn-primary" %>
+                  <%= link_to 'Add Member', new_membership_path(:group_id => group.id), :class=>"action" %>
 
                   <!-- Show evaluation results if any exist -->
                   <% resultsExist = false %>
@@ -68,9 +67,9 @@
 
                   <!-- Show option to see evaluation results if they exist --> 
                   <% if resultsExist %>
-                    <%= link_to 'Results', ratings_path(:group_id => group.id), :class => "btn btn-primary" %>
+                    <%= link_to 'Results', ratings_path(:group_id => group.id), :class=>"action" %>
                   <% end %>
-              <%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure you want to delete ' + group.gname + '?'}, :class => "btn btn-danger" %></td>
+              <%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure you want to delete ' + group.gname + '?'}, :class=>"action" %></td>
         </tr>
       <% end %>
     <% end %>
