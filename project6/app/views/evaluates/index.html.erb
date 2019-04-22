@@ -10,16 +10,15 @@
   </thead>
 
   <tbody>
-    <% @evaluates.each do |eval| %>
+    <% @evaluates.each do |e| %>
 
-      <% if (eval.user_id == current_user.id and eval.attempt == false) or current_user.try(:admin?) %>
+      <% if (e.user_id == current_user.id and e.attempt == false) or current_user.try(:admin?) %>
         <tr>
-          <td><%= Group.find(eval.group_id).gname %></td>
-          <td><%= User.find(eval.ratee_id).email %></td>
-          <td><%= link_to 'Rate', new_rating_path(:evaluate_id => eval.id), :class => "btn btn-primary" %>
-        
+          <td><%= Group.find(e.group_id).gname %></td>
+          <td><%= User.find(e.ratee_id).Fname %> <%= User.find(e.ratee_id).Lname %></td>
+          <td><%= link_to 'Rate', new_rating_path(:evaluate_id => e.id), :class => "btn btn-primary" %>
               <% if current_user.try(:admin?) %>
-              <br><%= link_to 'Destroy', eval, method: :delete, data: { confirm: 'Are you sure?' } %><br> </td>
+                <br><%= link_to 'Destroy', e, method: :delete, data: { confirm: 'Are you sure?' } %><br> </td>
               <% end %>
         </tr>
       <% end %>

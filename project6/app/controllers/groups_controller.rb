@@ -8,7 +8,11 @@
     if !user_signed_in?
       redirect_to welcomes_path
     end
-    @groups = Group.all
+    if user_signed_in? and current_user.try(:admin?)
+      @groups = Group.where(user_id: current_user)
+    else
+      @groups = Group.all
+    end
   end
 
   # GET /groups/1
@@ -28,7 +32,7 @@
       redirect_to welcomes_path
     end
     # Create a new group
-    @group = Group.new
+    @group = current_user.groups.build
   end
 
   # GET /groups/1/edit
@@ -42,7 +46,7 @@
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
+    @group = current_user.groups.build(group_params)
     # Create and save a group
     respond_to do |format|
       if @group.save
