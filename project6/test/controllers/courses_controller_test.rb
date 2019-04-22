@@ -21,6 +21,16 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
+  test "should not save course without user_id" do 
+    course = Course.new
+    assert_not course.save
+  end 
+
+  test "should report error" do 
+    assert_raises(NameError) do
+      some_undefined_variable 
+    end 
+  end 
 
   test "should destroy course" do
     assert_difference('Course.count', -1) do

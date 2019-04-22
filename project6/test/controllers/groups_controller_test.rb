@@ -21,7 +21,16 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
+  test "should not save group without course_id" do 
+    group = Group.new
+    assert_not group.save
+  end 
 
+  test "should report error" do 
+    assert_raises(NameError) do
+      some_undefined_variable 
+    end 
+  end 
 
   test "should destroy group" do
     assert_difference('Group.count', -1) do

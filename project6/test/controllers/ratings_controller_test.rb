@@ -25,6 +25,18 @@ class RatingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
+
+  test "should not save rating without evaluate_id" do 
+    rating = Rating.new
+    assert_not rating.save
+  end 
+
+  test "should report error" do 
+    assert_raises(NameError) do
+      some_undefined_variable 
+    end 
+  end 
+
   test "should destroy rating" do
     assert_difference('Rating.count', -1) do
       delete rating_url(@rating)
