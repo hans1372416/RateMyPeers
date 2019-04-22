@@ -13,20 +13,20 @@
 
   <div class="field">
     <%= form.label "Rater:" %>
-    <%# current_user.email %>
-    <%= form.number_field :user_id, :value => Rating.find(params[:rating_id]).user_id, :readonly =>true %>
+    <%= current_user.Fname %> <%= current_user.Lname %>
+    <%= form.hidden_field :user_id, :value => Rating.find(params[:rating_id]).user_id, :readonly =>true %>
   </div>
 
   <div class="field">
     <%= form.label "Ratee:" %>
-    <%# Rating.find(params[:rating_id]).ratee_id %>
-    <%= form.number_field :ratee_id, :value => Rating.find(params[:rating_id]).ratee_id, :readonly =>true %>
+    <%= User.find(Rating.find(params[:rating_id]).ratee_id).Fname %> <%= User.find(Rating.find(params[:rating_id]).ratee_id).Lname %>
+    <%= form.hidden_field :ratee_id, :value => Rating.find(params[:rating_id]).ratee_id, :readonly =>true %>
   </div>
 
   <div class="field">
-    <%= form.label "Group::" %>
-    <%# Rating.find(params[:rating_id]).group_id %>
-    <%= form.number_field :group_id, :value => Rating.find(params[:rating_id]).group_id, :readonly =>true %>
+    <%= form.label "Group:" %>
+    <%= Group.find(Rating.find(params[:rating_id]).group_id).gname %>
+    <%= form.hidden_field :group_id, :value => Rating.find(params[:rating_id]).group_id, :readonly =>true %>
   </div>
 
   <div class="field">
