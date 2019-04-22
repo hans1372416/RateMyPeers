@@ -18,7 +18,7 @@
     <%= form.hidden_field :evaluate_id, :value => Evaluate.find(params[:evaluate_id]).id, :readonly =>true %>
     <%= form.hidden_field :ratee_id, :value => Evaluate.find(params[:evaluate_id]).user_id, :readonly =>true %>
     <%= form.hidden_field :group_id, :value => Evaluate.find(params[:evaluate_id]).group_id, :readonly =>true %>
-	<%= form.hidden_field :user_id, :value => current_user.id  %>
+    <%= form.hidden_field :user_id, :value => current_user.id  %>
   </div>
 
   <div class="field">
@@ -42,7 +42,8 @@
 </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
+$(document).ready(function(){
   $(".slide-container .score").text($(".slider").val());
-  $(".slider").on("input",function(){$(".slide-container .score").text($(".slider").val());})
+  $(".slider").on("input",function(){$(".slide-container .score").text($(".slider").val());})});
 </script>
 
