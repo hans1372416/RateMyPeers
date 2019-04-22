@@ -13,6 +13,7 @@ html{
   word-wrap: break-word;
   background-color: #F2F1E9;
   color: #333;
+text-align:center;
 }
 body{
   margin: 0;
@@ -39,9 +40,34 @@ background-color:#333;
 padding:10pt;
 font-weight:600;
 }
-
-table{
+table tbody a.action{
+display:block;
+text-align:center;
+transition:.2s;
+}
+a.new{
+font-size:14pt;
+display:inline-block;
+text-align:center;
+border-radius:50px;
+border: 2px solid #F5765E;
+padding:2px 8px;
+margin: 2px;
+transition:.2s;
+color: #333;
+}
+a.new:hover{
+background-color: #F5765E
+}
+a.new::before{
+font-size:18pt;
+vertical-align:-1px;
+content:"+ "
+}
+table:not(.landing-page){
+width:100%;
 border-collapse:collapse;
+border: 2px solid #F5765E;
 }
 
 thead tr{
@@ -55,12 +81,12 @@ background-color:white;
 th{
 color:#F2F1E9;
 background-color:#F5765E;
-font-
 }
 
 td,th{
 padding:10pt;
-text-align:left;
+text-align:center;
+
 }
 
 /* start of nav */
@@ -166,7 +192,7 @@ nav .profile-pic{
 .field *{
   margin: 5pt;
 }
-input[type="email"],input[type="password"],input[type="submit"],input[type="text"]{
+input[type="email"],input[type="password"],input[type="submit"],input[type="text"],select{
   padding: 5pt;
   margin: 10pt 0;
   font-size: 12pt;
@@ -177,11 +203,19 @@ input[type="email"],input[type="password"],input[type="submit"],input[type="text
   font-family: roboto;
   background: none;
 }
-input[type="email"],input[type="password"],input[type="text"]{
+input[type="email"],input[type="password"],input[type="text"],select{
   width: 200pt;
   transition: .2s;
 }
-input[type="email"]:focus,input[type="password"]:focus,input[type="text"]:focus{
+option{
+text-align: center;
+border:none;
+background-color:#33333375;
+}
+option:hover,option:focus{
+background-color:#333333;
+}
+input[type="email"]:focus,input[type="password"]:focus,input[type="text"]:focus,select:focus{
   width: 275pt;
   border: 2px solid #C73030;
 }
