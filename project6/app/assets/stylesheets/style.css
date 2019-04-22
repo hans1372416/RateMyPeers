@@ -331,6 +331,7 @@ table.landing-page{
   width:100%;
   max-width:1200pt;
   margin: 0 auto;
+	text-align:left;
 }
 .how-it-works{
   text-align: center;
@@ -341,6 +342,7 @@ table.landing-page{
 }
 .landing-page td.media{
   width: 60%;
+text-align:left;
 
   /* background-color:#ff000050; */
 }
@@ -349,10 +351,12 @@ table.landing-page{
 }
 .landing-page td.text{
   width: 40%;
+text-align:left;
   /* background-color: #00ff0050; */
 }
 .landing-page td.split{
   width: 50%;
+text-align:left;
 }
 .landing-page td.media *{
   width: 100%;
