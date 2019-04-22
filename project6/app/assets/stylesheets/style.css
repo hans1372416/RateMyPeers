@@ -71,7 +71,8 @@ border: 2px solid #F5765E;
 }
 
 thead tr{
-background-color:white;
+background-color:#F5765E;
+font-weight:500;
 }
 
 tbody tr:nth-child(even){
