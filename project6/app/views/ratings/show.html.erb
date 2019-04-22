@@ -1,8 +1,8 @@
 Evaluation Submitted<br>
 Group: <%= Group.find(@rating.group_id).gname %><br>
-Rated: <%= User.find(Rating.find(@rating.id).ratee_id).Fname %> <%= User.find(Rating.find(@rating.id).ratee_id).Lname %><br>
+Rated: <%= User.find(Evaluate.find(@rating.evaluate_id).ratee_id).Fname %> <%= User.find(Evaluate.find(@rating.evaluate_id).ratee_id).Lname %><br>
 Score: <%= @rating.score %><br>
 Comments: <%= @rating.comments %><br>
-<% Rating.find(@rating.id).update_attribute :attempted, true %>
+
 
 <%= link_to 'Back', groups_path %>
