@@ -10,7 +10,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :Fname
       t.string :Lname
-      t.float :score, default: 0
+      t.decimal :score, default: 0, precision: 5, scale: 2
       t.integer :commented_num, default: 0
 
 

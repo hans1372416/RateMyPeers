@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_04_22_050913) do
     t.string "name"
     t.string "Fname"
     t.string "Lname"
-    t.float "score", default: 0.0
+    t.decimal "score", precision: 5, scale: 2, default: "0.0"
     t.integer "commented_num", default: 0
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
