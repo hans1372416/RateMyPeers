@@ -1,30 +1,41 @@
 <h1><%= @group.gname %></h1>
-
 <% if @group.membership_ids.length == 0 %>	
     <%= "There are currently no members in this group" %>	
 <% else %>	
-	<table>
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Score</th>
-				<th>Comments</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% for i in 0...@group.membership_ids.length %>
-				<% if @group.membership_ids != current_user.id %>
-				<tr> 
-					<td><%= User.find(Membership.find(@group.membership_ids[i]).user_id).Fname %> <%= User.find(Membership.find(@group.membership_ids[i]).user_id).Lname %></td>
-					<td><%# Rating.find(Membership.find(@group_membership_ids[i]).user_id).score%></td>
-					<td></td>
-					<td><%= link_to 'Rate', new_rating_path(:rating_id => @rating.id, :user_id => current_user.id, :ratee_id => @group.membership_ids, :group_id => @group.id) %></td>
-				</tr>
+<table>
+	<thead>
+	<tr>
+		<th>Name</th>
+		<th>Score</th>
+		<th>Comments</th>
+		<th>Actions</th>
+	</tr>
+	</thead>
+	<tbody>
+	<% for i in 0...@group.membership_ids.length %>
+	<tr>
+		<td><%= User.find(Membership.find(@group.membership_ids[i]).user_id).Fname %> <%= User.find(Membership.find(@group.membership_ids[i]).user_id).Lname %></td>
+		<td></td>
+		<td></td>
+		<% @users = User.all.collect %>
+			<% @members = [] %>
+			<% @users.each do |user| %>
+				<% if user.membership_ids.include? @group.membership_ids[i] %>
+					<% @members.push user %> 
 				<% end %>
 			<% end %>
-		</tbody>
-	</table>
+
+			<% @members.each_with_index do |member, n|  %>
+				<% @rating = Rating.new(:group_id => @group.id, :user_id => current_user.id, :ratee_id => @members[n].id) %> 
+				<% @rating.save %>
+			<% end %>
+		<td><% if @group.membership_ids != current_user.id %>
+				<%= link_to 'Rate', new_rating_path(:rating_id => @rating.id) %>
+			<% end %>
+		</td>
+	</tr>
+	<% end %>
+	</tbody>
+</table>
 <% end %>
     <br><%= link_to 'Back to Groups', groups_path, :class => "btn btn-default" %>
-	<br><%= link_to 'Back to Classes', courses_path, :class => "btn btn-default" %>
