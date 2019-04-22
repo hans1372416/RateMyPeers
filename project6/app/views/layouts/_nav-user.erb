@@ -7,7 +7,7 @@
       <%= link_to 'Groups', groups_path %>
 	<%= link_to 'Open Evaluations', evaluates_path %>
       <div class="user">
-        <a href="" id="username"><%= current_user.email %></a>
+        <a href="" id="username"><%= current_user.email %> - <%= current_user.score %></a>
           <div class="profile-pic">
                 <%= link_to image_tag("default-pic.svg")%>
           </div>

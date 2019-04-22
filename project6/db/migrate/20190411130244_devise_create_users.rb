@@ -10,8 +10,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :Fname
       t.string :Lname
-      t.float :score
-      t.integer :commented_num
+      t.float :score, default: 0
+      t.integer :commented_num, default: 0
 
 
       ## Recoverable
