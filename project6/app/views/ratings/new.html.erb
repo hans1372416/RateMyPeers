@@ -1,30 +1,48 @@
-<h1>New Rating</h1>
+<div class="eval">
+<h1>Peer Evaluation for <%= User.find(Evaluate.find(params[:evaluate_id]).ratee_id).Fname %> <%= User.find(Evaluate.find(params[:evaluate_id]).ratee_id).Lname %></h1>
+<h3><%= Group.find(Evaluate.find(params[:evaluate_id]).group_id).gname.upcase %> - <%= Course.find(Group.find(Evaluate.find(params[:evaluate_id]).group_id).course_id).semester %> <%= Course.find(Group.find(Evaluate.find(params[:evaluate_id]).group_id).course_id).cname.upcase %></h3>
+<%= form_with(model: @rating, local: true) do |form| %>
+  <% if @rating.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
 
-<%= render 'form', rating: @rating %>
+      <ul>
+      <% @rating.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<!-- <div class="eval">
-  <h1>Peer Evaluation for John Smith</h1>
-  <h3>Group Name - Class Name</h3>
+  <div class="field">
+    <%= form.hidden_field :evaluate_id, :value => Evaluate.find(params[:evaluate_id]).id, :readonly =>true %>
+    <%= form.hidden_field :ratee_id, :value => Evaluate.find(params[:evaluate_id]).user_id, :readonly =>true %>
+    <%= form.hidden_field :group_id, :value => Evaluate.find(params[:evaluate_id]).group_id, :readonly =>true %>
+	<%= form.hidden_field :user_id, :value => current_user.id  %>
+  </div>
 
-  <form>
+  <div class="field">
     <div class="slide-container">
       <label>Overall Rating: <br> <span class="score"></span></label>
-      <input type="range" min="0" max="10" value="5" class="slider">
-    </div><br><br>
-    <label>Comments on John's Performance:</label>
-    <textarea name="name" rows="8"></textarea><br><br><br>
-    <label>Would you choose to work with John again in another group?</label>
-    <input type="radio" name="yes" checked><label for="radio">Yes</label>
-    <input type="radio" name="yes" ><label for="radio">No</label><br><br><br>
-    <input type="submit" name="" value="Submit Evaluation">
+	<%= form.range_field :score, :min=>0, :max=>10, :class=>"slider", :value=>5%>
+    </div>
+  </div><br><br>
 
-  </form>
-</div>
+  <div class="field">
+    <label>Comments on <%=(User.find(Evaluate.find(params[:evaluate_id]).ratee_id).Fname).capitalize%>'s performance:</label>
+    <%= form.text_area :comments, :rows=>8 %>
   </div>
-  </body>
+
+  <div class="actions">
+    <%= form.submit "Submit Evaluation"%><br>
+    <%= link_to 'Back', evaluates_path %>
+  </div>
+
+<% end %>
+</div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
   $(".slide-container .score").text($(".slider").val());
   $(".slider").on("input",function(){$(".slide-container .score").text($(".slider").val());})
 </script>
- -->
+
