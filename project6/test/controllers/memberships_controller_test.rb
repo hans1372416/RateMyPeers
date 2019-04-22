@@ -7,12 +7,12 @@ class MembershipsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     get memberships_url
-    assert_response :success
+    assert_response :redirect
   end
 
   test "should get new" do
     get new_membership_url
-    assert_response :success
+    assert_response :redirect
   end
 
   test "should create membership" do
@@ -43,6 +43,5 @@ class MembershipsControllerTest < ActionDispatch::IntegrationTest
       delete membership_url(@membership)
     end
 
-    assert_redirected_to memberships_url
   end
 end

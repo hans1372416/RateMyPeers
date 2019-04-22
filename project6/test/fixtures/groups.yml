@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  gname: MyString
   course_id: MyString
-  semester: MyString
+ 
 
 two:
-  name: MyString
+  gname: MyString
   course_id: MyString
-  semester: MyString
+  
