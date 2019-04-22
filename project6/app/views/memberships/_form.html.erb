@@ -12,9 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label "Student" %>
-    <%= form.select :user_id, User.where(:admin => false).collect {|p| [ p.email, p.id ] } %>
+    <%= form.label "Add the first Student to your group" %></br>
+    <%= form.select :user_id, User.where(:admin => false).collect {|p| ["#{p.Lname} #{p.Fname}(#{p.email})", p.id ] } %>
   </div>
+
+  <div class="field">
+    <%= form.label "Add the second Student to your group" %></br>
+    <%= form.select :user_id, User.where(:admin => false).collect {|p| ["#{p.Lname} #{p.Fname}(#{p.email})", p.id ] } %>
+  </div>
+
+
 
   <div class="field">
     <%= form.label "Group" %>
