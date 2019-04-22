@@ -61,7 +61,7 @@
                   <% end %>
 
                   <% if resultsExist %>
-                    <%= link_to 'Results', results_path(:group_id => group.id), :class => "btn btn-primary" %>
+                    <%= link_to 'Results', ratings_path(:group_id => group.id), :class => "btn btn-primary" %>
                   <% end %>
 
               <%= link_to 'Add Member', new_membership_path(:group_id => group.id), :class => "btn btn-primary" %>

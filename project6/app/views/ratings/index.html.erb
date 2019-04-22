@@ -1,6 +1,5 @@
 <h1>Rating</h1>
 
-<%# if (@rating.group_id == Group.find(params[:group_id]).id) and (@rating.attempted == true) %>
 <table>
   <thead>
     <tr>
@@ -28,7 +27,6 @@
     <% end %>
   </tbody>
 </table>
-<%# end %>
 
 <br><%= link_to 'Back', groups_path, :class => "btn btn-default" %>
 
