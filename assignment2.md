@@ -17,7 +17,7 @@ Features：
 | Baseline | sim = Jaccard(usersPerItem[i2],usersPerItem[item])           | 1k      | 0.98758    | 0.97086   |
 | Baseline | sim = Jaccard(set(OccupationPeritem[i2]),set(OccupationPeritem[item]))    证明occupation是user很明显的特征，所以结果更好？之类的 | 1k      | 0.94402    | 0.92920   |
 | Baseline | sim = Jaccard(MaxOccupationPeritem[item],MaxOccupationPeritem[i2])   Max 前3名的occupation，效果没那么好，你们可以调一下，看前几名好 | 1k      | 1.01325    | 1.02156   |
-|          |                                                              | 1m      |            |           |
+| Baseline | user feature 解决cold start                                  | 1k      | 1.00824 |  1.01899  |
 |          |                                                              | 1m      |            |           |
 |          |                                                              |         |            |           |
 |          |                                                              |         |            |           |
