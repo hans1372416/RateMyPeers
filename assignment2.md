@@ -21,5 +21,5 @@ Features：
 | Baseline  |     usersPerItem                               | 1m      |     0.7999095548681616  | 0.7969606939501926 |
 | Baseline|  Occupation                                              | 1m        |  0.826759935094664          |  0.82569816186373         |
 |  Baseline|  MaxOccupationPeritem            | 1m        |0.9593258309936891            | 0.9597527439544743          |
-| Baseline |   user feature                                                           | 1m        |            |           |
+| Baseline |   user feature                                                           | 1m        |  0.9592320541518128          |  0.959552026804971         |
 |          |                                                              |         |            |           |
